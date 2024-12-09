@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using WebClinic.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddControllers();
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer($"Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = ClinicDB; Integrated Security = True"));
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 
@@ -13,6 +23,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.MapControllers();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -21,5 +33,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.Run();
