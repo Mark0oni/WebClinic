@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using WebClinic.Data.Models
+@inject SignInManager<User> signInManager;
+
+<ul class="navbar-nav ms-auto">
+    @if(signInManager.IsSignedIn(User))
+    {
+        <li calss="nav-item">
+            <a claa="nav-link" asp-controller="Account" asp-action="Logout">Выйти</a>
+        </li>
+    }
+    else
+    {
+        <li calss="nav-item">
+            <a claa="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
+        </li>
+        <li calss="nav-item">
+            <a claa="nav-link" asp-controller="Account" asp-action="Register">Регистрация</a>
+        </li>
+    }
+
+</ul>

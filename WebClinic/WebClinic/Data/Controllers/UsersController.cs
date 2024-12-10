@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebClinic.Data;
 using WebClinic.Data.Models;
 
 
-namespace WebClinic.Controllers
+namespace WebClinic.Data.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
