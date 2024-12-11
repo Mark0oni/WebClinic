@@ -1,0 +1,89 @@
+﻿@using WebClinic.Data.ViewModels;
+@model RegisterViewModel;
+
+@{
+    ViewData["Title"] = "Регистрация";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="form-container">
+    
+    <h2 class="form-title">Регистрация</h2>
+    
+    <div class="form-inputs">
+        <form asp-action="Register" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-columns">
+                <div class="form-column">
+                    <div class="mb-3">
+                        <label asp-for="LastName" class="form-label">Фамилия</label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="FirstName" class="form-label">Имя</label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="MiddleName" class="form-label">Отчество</label>
+                        <input asp-for="MiddleName" class="form-control" />
+                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="DateOfBirth" class="form-label">Дата рождения</label>
+                        <input asp-for="DateOfBirth" class="form-control" type="date" />
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-column">
+                    <div class="mb-3">
+                        <label asp-for="Gender" class="form-label">Пол</label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">Выберите пол</option>
+                            <option value="@RegisterViewModel.Genders.Мужской">Мужской</option>
+                            <option value="@RegisterViewModel.Genders.Женский">Женский</option>
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">Почта</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label">Пароль</label>
+                        <input asp-for="Password" class="form-control" type="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConfirmPassword" class="form-label">Подтвердите пароль</label>
+                        <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Регистрация" class="btn btn-primary mb-3" />
+
+            <p class="text-center">
+                У вас есть аккаунт? <a asp-controller="Account" asp-action="Login" class="a-link">Войти</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}

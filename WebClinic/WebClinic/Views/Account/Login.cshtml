@@ -1,0 +1,54 @@
+﻿@using WebClinic.Data.ViewModels;
+@model LoginViewModel;
+
+@{
+    ViewData["Title"] = "Вход";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="form-container">
+    
+    <h2 class="form-title">Вход</h2>
+        
+    <div class="form-inputs">
+        <form asp-action="Login" method="post">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Почта</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Пароль</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3 form-check">
+                <label asp-for="RememberMe" class="form-check-label">Запомнить меня?</label>
+                <input asp-for="RememberMe" class="form-check-input" type="checkbox" />
+
+                <div class="float-end">
+                    <a asp-controller="Account" asp-action="VeryfyEmail" class="a-link">
+                        Забыли пароль?
+                    </a>
+                </div>
+            </div>
+            
+            <input type="submit" value="Войти" class="btn btn-primary mb-3"></input>
+            
+            <p class="text-center">
+                У вас нет аккаунта? <a asp-controller="Account" asp-action="Register" class="a-link">Регистрация</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}

@@ -6,7 +6,6 @@ namespace WebClinic.Data.ViewModels
     {
         [Required(ErrorMessage = "Это поле обязательно")]
         [EmailAddress(ErrorMessage = "Введите корректный адрес электронной почты")]
-        [Display(Name = "Почта")]
         public string Email { get; set; }
     }
 }

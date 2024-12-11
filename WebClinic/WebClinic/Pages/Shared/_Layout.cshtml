@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport"/>
 
+    <title>@ViewBag.Title</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebClinic.styles.css" asp-append-version="true" />
@@ -18,45 +20,43 @@
     <header>
         <nav class="navbar">
             <div class="container">
+                
                 <a class="navbar-logo" asp-area="" asp-page="/Index">
-                    <img src="~/images/logo.svg" alt="Clinic+"/>    
+                    <img src="~/images/logo.svg" alt="WebClinic"/>    
                 </a>
+                
                 <div class="navbar-wrap">
                     <ul class="navbar-menu">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index">Запись</a>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index">Услуги</a>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index">Расписание</a>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index">Врачи</a>
                         </li>
-                        <li>
+                        
+                        <li class="nav-item">
                             <partial name="_LoginPartial" />
                         </li>
                     </ul>
                 </div>
+            
             </div>
         </nav>
     </header>
         
     <main class="content">
-        <div class=container>
             @RenderBody()
-            content
-        </div>
     </main>
         
-    <footer class="footer">
-        <div class="container">
-            
-        </div>
-    </footer>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
