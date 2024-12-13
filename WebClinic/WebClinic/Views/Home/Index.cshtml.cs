@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebClinic.Pages
+namespace WebClinic.Views.Home
 {
     public class IndexModel : PageModel
     {

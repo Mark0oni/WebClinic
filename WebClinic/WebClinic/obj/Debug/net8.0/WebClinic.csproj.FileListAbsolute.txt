@@ -1460,7 +1460,6 @@ C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\staticwebassets\msbuil
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WebClinic.props
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WebClinic.props
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\scopedcss\bundle\WebClinic.styles.css
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\scopedcss\projectbundle\WebClinic.bundle.scp.css
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\WebClinic.csproj.Up2Date
@@ -1477,3 +1476,4 @@ C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net8.0\Microsoft.Extensions.F
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css

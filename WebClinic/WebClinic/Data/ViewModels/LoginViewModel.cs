@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebClinic.Data.ViewModels
 {
@@ -6,13 +7,15 @@ namespace WebClinic.Data.ViewModels
     {
         [Required(ErrorMessage = "Это поле обязательно")]
         [EmailAddress(ErrorMessage = "Введите корректный адрес электронной почты")]
+        [DisplayName("Почта")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Это поле обязательно")]
-        [DataType(DataType.Password, ErrorMessage = "Введите корректный пароль")]
-        public string Passsword { get; set; }
+        [DataType(DataType.Password)]
+        [DisplayName("Пароль")]
+        public string Password { get; set; }
 
+        [DisplayName("Запомнить меня?")]
         public bool RememberMe { get; set; }
-
     }
 }

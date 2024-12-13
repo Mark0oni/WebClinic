@@ -21,26 +21,26 @@
         <nav class="navbar">
             <div class="container">
                 
-                <a class="navbar-logo" asp-area="" asp-page="/Index">
-                    <img src="~/images/logo.svg" alt="WebClinic"/>    
+                <a class="navbar-logo" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo.svg" alt="WebClinic" />
                 </a>
                 
                 <div class="navbar-wrap">
                     <ul class="navbar-menu">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Index">Запись</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Запись</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Index">Услуги</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Услуги</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Index">Расписание</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Расписание</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Index">Врачи</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Врачи</a>
                         </li>
                         
                         <li class="nav-item">
@@ -54,7 +54,7 @@
     </header>
         
     <main class="content">
-            @RenderBody()
+        @RenderBody()
     </main>
         
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

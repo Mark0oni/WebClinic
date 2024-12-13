@@ -88,40 +88,28 @@ body {
 }
 
 .content {
-    margin: 100px auto 0 auto;
+    margin: 70px auto 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
 }
 
 .form-container {
-    padding: 30px 50px 30px 50px;
+    padding: 30px 40px 30px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 400px;
+}
+
+.form-box {
+    width: 500px;
 }
 
 .form-title {
     margin-bottom: 25px;
-}
-
-.form-inputs {
-    min-width: 420px;
-    width: 100%;
-}
-
-.form-columns {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.form-column {
-    width: 48%;
 }
 
 .a-link {

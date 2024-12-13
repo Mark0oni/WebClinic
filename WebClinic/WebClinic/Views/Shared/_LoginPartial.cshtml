@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @using WebClinic.Data.Models
-@inject SignInManager<User> signInManager;
+@inject SignInManager<Users> signInManager;
 
 
 @if(signInManager.IsSignedIn(User))

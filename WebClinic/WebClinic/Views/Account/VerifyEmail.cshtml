@@ -1,0 +1,33 @@
+﻿@using WebClinic.Data.ViewModels;
+@model VerifyEmailViewModel;
+
+@{
+    ViewData["Title"] = "Подтверждение почты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-container">
+
+    <h2 class="form-title">Подтверждение почты</h2>
+
+    <div class="form-box">
+        <form asp-action="VerifyEmail" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            
+            <input type="submit" value="Подтвердить" class="btn btn-primary" />
+            
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}

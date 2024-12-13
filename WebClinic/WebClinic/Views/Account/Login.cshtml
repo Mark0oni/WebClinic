@@ -3,51 +3,53 @@
 
 @{
     ViewData["Title"] = "Вход";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="form-container">
-    
+
     <h2 class="form-title">Вход</h2>
-        
-    <div class="form-inputs">
+    
+    <div class="form-box">
         <form asp-action="Login" method="post">
-            
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
             <div class="mb-3">
-                <label asp-for="Email" class="form-label">Почта</label>
+                <label asp-for="Email" class="form-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             
             <div class="mb-3">
-                <label asp-for="Password" class="form-label">Пароль</label>
+                <label asp-for="Password" class="form-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             
-            <div class="mb-3 form-check">
-                <label asp-for="RememberMe" class="form-check-label">Запомнить меня?</label>
-                <input asp-for="RememberMe" class="form-check-input" type="checkbox" />
-
-                <div class="float-end">
-                    <a asp-controller="Account" asp-action="VeryfyEmail" class="a-link">
-                        Забыли пароль?
-                    </a>
-                </div>
+            <div class="float-end">
+                <a asp-controller="Account" asp-action="VerifyEmail" class="text-decoration-none">
+                    Забыли пароль?
+                </a>
             </div>
             
-            <input type="submit" value="Войти" class="btn btn-primary mb-3"></input>
+            <div class="form-check mb-3">
+                <label class="form-check-label">
+                    <input asp-for="RememberMe" class="form-check-input" />
+                    @Html.DisplayNameFor(a=> a.RememberMe)
+                </label>
+            </div>
             
-            <p class="text-center">
-                У вас нет аккаунта? <a asp-controller="Account" asp-action="Register" class="a-link">Регистрация</a>
+            <input type="submit" value="Войти" class="btn btn-primary" />
+            
+            <p class="text-center mt-2">
+                У вас нет аккаунта? <a asp-controller="Account" asp-action="Register" class="text-decoration-none">Регистрация</a>
             </p>
+
         </form>
     </div>
 </div>
 
-@section Scripts {
+@section Scripts{
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
     }

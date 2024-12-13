@@ -1,101 +1,210 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using WebClinic.Data.Models;
-
+using WebClinic.Data.ViewModels;
 
 namespace WebClinic.Data.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
+    [Authorize(Roles = "Admin")]
     public class UsersController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly UserManager<Users> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsersController(AppDbContext context)
+        public UsersController(UserManager<Users> userManager, RoleManager<IdentityRole> roleManager)
         {
-            _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public IActionResult GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var users = _userManager.Users.Select(user => new {
+                user.Id,
+                user.UserName,
+                user.Email,
+                user.LastName,
+                user.FirstName,
+                user.MiddleName
+            }).ToList();
+
+            return Ok(users);
         }
 
-        // GET: api/Users/5
+        // GET: api/Users/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<IActionResult> GetUser(string id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
 
             if (user == null)
+                return NotFound(new { Message = "Пользователь не найден" });
+
+            return Ok(new
             {
-                return NotFound();
-            }
-
-            return user;
-        }
-
-        // PUT: api/Users/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
-        {
-            if (id != user.UserId)
-            {
-                return BadRequest("Идентификатор пользователя не совпадает.");
-            }
-
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+                user.Id,
+                user.UserName,
+                user.Email,
+                user.LastName,
+                user.FirstName,
+                user.MiddleName
+            });
         }
 
         // POST: api/Users
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<IActionResult> CreateUser([FromBody] RegisterViewModel model)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.UserId }, user);
-        }
-
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var user = new Users
             {
-                return NotFound();
+                UserName = model.Email,
+                Email = model.Email,
+                LastName = model.LastName,
+                FirstName = model.FirstName,
+                MiddleName = model.MiddleName
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return BadRequest(ModelState);
             }
 
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            // Назначить роль по умолчанию (например, "Patient")
+            await _userManager.AddToRoleAsync(user, "Patient");
 
-            return NoContent();
+            return Ok(new { Message = "Пользователь успешно создан", UserId = user.Id });
         }
 
-        private bool UserExists(int id)
+        // PUT: api/Users/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(string id, [FromBody] RegisterViewModel model)
         {
-            return _context.Users.Any(e => e.UserId == id);
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return NotFound(new { Message = "Пользователь не найден" });
+
+            user.LastName = model.LastName;
+            user.FirstName = model.FirstName;
+            user.MiddleName = model.MiddleName;
+            user.Email = model.Email;
+            user.UserName = model.Email;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return BadRequest(ModelState);
+            }
+
+            return Ok(new { Message = "Пользователь успешно обновлен" });
+        }
+
+        // DELETE: api/Users/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return NotFound(new { Message = "Пользователь не найден" });
+
+            var result = await _userManager.DeleteAsync(user);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return BadRequest(ModelState);
+            }
+
+            return Ok(new { Message = "Пользователь успешно удален" });
+        }
+
+        // GET: api/Users/{id}/Roles
+        [HttpGet("{id}/Roles")]
+        public async Task<IActionResult> GetUserRoles(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return NotFound(new { Message = "Пользователь не найден" });
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            return Ok(roles);
+        }
+
+        // POST: api/Users/{id}/Roles
+        [HttpPost("{id}/Roles")]
+        public async Task<IActionResult> AddRoleToUser(string id, [FromBody] string role)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return NotFound(new { Message = "Пользователь не найден" });
+
+            if (!await _roleManager.RoleExistsAsync(role))
+                return BadRequest(new { Message = "Роль не существует" });
+
+            var result = await _userManager.AddToRoleAsync(user, role);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return BadRequest(ModelState);
+            }
+
+            return Ok(new { Message = "Роль успешно добавлена пользователю" });
+        }
+
+        // DELETE: api/Users/{id}/Roles
+        [HttpDelete("{id}/Roles")]
+        public async Task<IActionResult> RemoveRoleFromUser(string id, [FromBody] string role)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return NotFound(new { Message = "Пользователь не найден" });
+
+            if (!await _roleManager.RoleExistsAsync(role))
+                return BadRequest(new { Message = "Роль не существует" });
+
+            var result = await _userManager.RemoveFromRoleAsync(user, role);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return BadRequest(ModelState);
+            }
+
+            return Ok(new { Message = "Роль успешно удалена у пользователя" });
         }
     }
 }
