@@ -1,24 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebClinic.Data.Models
 {
-    public class Doctor : Users
+    public class Doctor
     {
-        [Key]
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
-        public string PostName { get; set; }
+        public required string PostName { get; set; }
 
-        public int Experience { get; set; }
+        public required int Experience { get; set; }
 
-        public decimal Salary { get; set; }
+        public required decimal Salary { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
+        public required string UserId { get; set; }
 
-        [ForeignKey("UserId")]
-        public Users User { get; set; }
+        public User? User { get; set; }
+
+        public List<Service> Services { get; set; } = [];
     }
 
 }

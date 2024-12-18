@@ -6,38 +6,44 @@ namespace WebClinic.Data.ViewModels.Doctor
 {
     public class DoctorViewModel
     {
+        public string? Id { get; set; }
+
         [Required(ErrorMessage = "Это поле обязательно")]
         [StringLength(50, ErrorMessage = "Фамилия не может превышать 50 символов")]
         [DisplayName("Фамилия")]
-        public string LastName { get; set; }
+        public required string LastName { get; set; }
 
         [Required(ErrorMessage = "Это поле обязательно")]
         [StringLength(50, ErrorMessage = "Имя не может превышать 50 символов")]
         [DisplayName("Имя")]
-        public string FirstName { get; set; }
+        public required string FirstName { get; set; }
 
         [Required(ErrorMessage = "Это поле обязательно")]
         [StringLength(50, ErrorMessage = "Отчество не может превышать 50 символов")]
         [DisplayName("Отчество")]
-        public string MiddleName { get; set; }
+        public required string MiddleName { get; set; }
 
         [Required(ErrorMessage = "Это поле обязательно")]
         [EmailAddress(ErrorMessage = "Введите корректный адрес электронной почты")]
         [DisplayName("Почта")]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = "Это поле обязательно")]
         [Display(Name = "Должность")]
-        public string PostName { get; set; }
+        public required string PostName { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = "Это поле обязательно")]
         [Range(0, 50, ErrorMessage = "Опыт должен быть от 0 до 50 лет")]
         [Display(Name = "Стаж")]
-        public int Experience { get; set; }
+        public required int Experience { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = "Это поле обязательно")]
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Зарплата")]
-        public decimal Salary { get; set; }
+        public required decimal Salary { get; set; }
+
     }
 }

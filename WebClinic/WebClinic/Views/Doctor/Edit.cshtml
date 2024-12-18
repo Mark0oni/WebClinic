@@ -1,0 +1,37 @@
+﻿@model WebClinic.Data.ViewModels.Doctor.EditDoctorViewModel;
+
+@{
+    ViewData["Title"] = "Редактировать врача";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Редактирование врача</h4>
+<hr />
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="PostName" class="form-label"></label>
+        <input asp-for="PostName" class="form-control" />
+        <span asp-validation-for="PostName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Experience" class="form-label"></label>
+        <input asp-for="Experience" class="form-control" />
+        <span asp-validation-for="Experience" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a href="@Url.Action("Index", "Doctor")" class="btn btn-secondary">Отмена</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
