@@ -1,13 +1,34 @@
-﻿@using Microsoft.AspNetCore.Identity;
+﻿@using Microsoft.AspNetCore.Identity
 @using WebClinic.Data.Models
-@inject SignInManager<Users> signInManager;
+@inject SignInManager<Users> signInManager
 
-
-@if(signInManager.IsSignedIn(User))
+@if (signInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Profile">Личный кабинет</a>
-    </li>
+    @if (User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="User" asp-action="Index">Пользователи</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Doctor" asp-action="Index">Врачи</a>
+        </li>
+    }
+
+    else if (User.IsInRole("Doctor"))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Doctor" asp-action="Dashboard">Мой график</a>
+        </li>
+    }
+
+    else if (User.IsInRole("Patient"))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Patient" asp-action="Appointments">Мои записи</a>
+        </li>
+    }
+
     <li class="nav-item">
         <a class="nav-link" asp-controller="Account" asp-action="Logout">Выйти</a>
     </li>
@@ -15,9 +36,17 @@
 else
 {
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
+        <a class="nav-link" asp-controller="Account" asp-action="Login">Услуги</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Register">Расписание</a>
     </li>
     
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" asp-controller="Account" asp-action="Register">Регистрация</a>
     </li>

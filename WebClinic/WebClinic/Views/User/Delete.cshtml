@@ -1,0 +1,40 @@
+﻿@model WebClinic.Data.ViewModels.User.UserViewModel
+
+@{
+    ViewData["Title"] = "Удаление пользователя";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="alert alert-warning">
+    <strong>Внимание!</strong> Вы собираетесь удалить пользователя. Это действие невозможно отменить.
+</div>
+
+<div class="form-group">
+    <label><strong>Фамилия:</strong></label>
+    <p>@Model.LastName</p>
+</div>
+
+<div class="form-group">
+    <label><strong>Имя:</strong></label>
+    <p>@Model.FirstName</p>
+</div>
+
+<div class="form-group">
+    <label><strong>Отчество:</strong></label>
+    <p>@Model.MiddleName</p>
+</div>
+
+<div class="form-group">
+    <label><strong>Почта:</strong></label>
+    <p>@Model.Email</p>
+</div>
+
+<form asp-controller="User" asp-action="DeleteConfirmed" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Email" value="@Model.Email" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a href="@Url.Action("Index", "User")" class="btn btn-secondary">Отмена</a>
+</form>
+
+

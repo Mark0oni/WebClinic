@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WebClinic.Data;
+using WebClinic.Data.Context;
 using WebClinic.Data.Models;
 
 

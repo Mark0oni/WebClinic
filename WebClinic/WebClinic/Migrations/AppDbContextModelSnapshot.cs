@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebClinic.Data;
+using WebClinic.Data.Context;
 
 #nullable disable
 
@@ -17,7 +17,7 @@ namespace WebClinic.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -155,6 +155,38 @@ namespace WebClinic.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("WebClinic.Data.Models.MedicalCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("IllnessHistory")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PolicyNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("MedicalCards", (string)null);
+                });
+
             modelBuilder.Entity("WebClinic.Data.Models.Users", b =>
                 {
                     b.Property<string>("Id")
@@ -166,6 +198,11 @@ namespace WebClinic.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -230,6 +267,56 @@ namespace WebClinic.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator().HasValue("Users");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
+                {
+                    b.HasBaseType("WebClinic.Data.Models.Users");
+
+                    b.Property<int>("Experience")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PostName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", t =>
+                        {
+                            t.Property("UserId")
+                                .HasColumnName("Doctor_UserId");
+                        });
+
+                    b.HasDiscriminator().HasValue("Doctor");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
+                {
+                    b.HasBaseType("WebClinic.Data.Models.Users");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
+
+                    b.HasDiscriminator().HasValue("Patient");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -281,6 +368,44 @@ namespace WebClinic.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.MedicalCard", b =>
+                {
+                    b.HasOne("WebClinic.Data.Models.Patient", "Patient")
+                        .WithMany("MedicalCards")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
+                {
+                    b.HasOne("WebClinic.Data.Models.Users", "User")
+                        .WithOne()
+                        .HasForeignKey("WebClinic.Data.Models.Doctor", "UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
+                {
+                    b.HasOne("WebClinic.Data.Models.Users", "User")
+                        .WithOne()
+                        .HasForeignKey("WebClinic.Data.Models.Patient", "UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
+                {
+                    b.Navigation("MedicalCards");
                 });
 #pragma warning restore 612, 618
         }

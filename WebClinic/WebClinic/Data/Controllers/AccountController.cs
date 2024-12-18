@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebClinic.Data.Models;
-using WebClinic.Data.ViewModels;
+using WebClinic.Data.ViewModels.Account;
 
 namespace WebClinic.Data.Controllers
 {
