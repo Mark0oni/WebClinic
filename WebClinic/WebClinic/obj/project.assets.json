@@ -8582,23 +8582,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Влад Сергеев\\.nuget\\packages\\": {},
+    "C:\\Users\\Alexander\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\WebClinic.csproj",
+      "projectUniqueName": "C:\\FILES\\university\\5semester\\TP\\kursac\\WebClinic\\WebClinic\\WebClinic.csproj",
       "projectName": "WebClinic",
-      "projectPath": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\WebClinic.csproj",
-      "packagesPath": "C:\\Users\\Влад Сергеев\\.nuget\\packages\\",
-      "outputPath": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\",
+      "projectPath": "C:\\FILES\\university\\5semester\\TP\\kursac\\WebClinic\\WebClinic\\WebClinic.csproj",
+      "packagesPath": "C:\\Users\\Alexander\\.nuget\\packages\\",
+      "outputPath": "C:\\FILES\\university\\5semester\\TP\\kursac\\WebClinic\\WebClinic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Влад Сергеев\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alexander\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8607,7 +8607,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
