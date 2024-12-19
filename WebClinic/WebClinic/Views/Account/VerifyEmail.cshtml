@@ -6,6 +6,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
 <div class="form-container">
 
     <h2 class="form-title">Подтверждение почты</h2>

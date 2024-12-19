@@ -218,6 +218,216 @@
         }
       }
     },
+    "/Schedule": {
+      "get": {
+        "tags": [
+          "Schedule"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Schedule/create": {
+      "get": {
+        "tags": [
+          "Schedule"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Schedule"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Date",
+                  "EndTime",
+                  "IsAvailable",
+                  "ServiceId",
+                  "StartTime"
+                ],
+                "type": "object",
+                "properties": {
+                  "Date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "StartTime": {
+                    "type": "string",
+                    "format": "time"
+                  },
+                  "EndTime": {
+                    "type": "string",
+                    "format": "time"
+                  },
+                  "IsAvailable": {
+                    "type": "boolean"
+                  },
+                  "ServiceId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Date": {
+                  "style": "form"
+                },
+                "StartTime": {
+                  "style": "form"
+                },
+                "EndTime": {
+                  "style": "form"
+                },
+                "IsAvailable": {
+                  "style": "form"
+                },
+                "ServiceId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Schedule/edit/{id}": {
+      "get": {
+        "tags": [
+          "Schedule"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Schedule"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Date",
+                  "EndTime",
+                  "IsAvailable",
+                  "ServiceId",
+                  "StartTime"
+                ],
+                "type": "object",
+                "properties": {
+                  "Date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "StartTime": {
+                    "type": "string",
+                    "format": "time"
+                  },
+                  "EndTime": {
+                    "type": "string",
+                    "format": "time"
+                  },
+                  "IsAvailable": {
+                    "type": "boolean"
+                  },
+                  "ServiceId": {
+                    "type": "string"
+                  },
+                  "DoctorId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Date": {
+                  "style": "form"
+                },
+                "StartTime": {
+                  "style": "form"
+                },
+                "EndTime": {
+                  "style": "form"
+                },
+                "IsAvailable": {
+                  "style": "form"
+                },
+                "ServiceId": {
+                  "style": "form"
+                },
+                "DoctorId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Schedule/delete/{id}": {
+      "get": {
+        "tags": [
+          "Schedule"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Service": {
       "get": {
         "tags": [

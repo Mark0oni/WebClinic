@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NbmTgcFA+SniSP7pRrwxTeUmYZwDlnWRpXB3CJBPUgc=",
+  "Hash": "N7XVyTwtsD836ODwjX0I0iLa283AnZrLlVEfAt1tBtE=",
   "Source": "WebClinic",
   "BasePath": "_content/WebClinic",
   "Mode": "Default",
@@ -1613,12 +1613,12 @@
       "OriginalItemSpec": "C:\\Users\\Влад Сергеев\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\9.0.0\\staticwebassets\\V5\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
+      "Identity": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qpv22ndaq9.gz",
       "SourceId": "WebClinic",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/WebClinic",
-      "RelativePath": "css/site#[.{fingerprint=qiwehwffd9}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=qpv22ndaq9}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1627,8 +1627,8 @@
       "RelatedAsset": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "7l4vosgtrh",
-      "Integrity": "+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=",
+      "Fingerprint": "ozzhmubabg",
+      "Integrity": "jPGAiPsTx036vRvBm+30oh0Qp9HtmJNMf+7PIyS4VcI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\wwwroot\\css\\site.css"
@@ -2677,8 +2677,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "qiwehwffd9",
-      "Integrity": "3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=",
+      "Fingerprint": "qpv22ndaq9",
+      "Integrity": "8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -5270,12 +5270,12 @@
   "Endpoints": [
     {
       "Route": "css/site.css",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qpv22ndaq9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001207729469"
+          "Quality": "0.001069518717"
         }
       ],
       "ResponseHeaders": [
@@ -5285,15 +5285,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "827"
+          "Value": "934"
         },
         {
           "Name": "ETag",
-          "Value": "\"+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=\""
+          "Value": "\"jPGAiPsTx036vRvBm+30oh0Qp9HtmJNMf+7PIyS4VcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Dec 2024 18:49:48 GMT"
+          "Value": "Thu, 19 Dec 2024 22:53:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5313,13 +5313,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=\""
+          "Value": "W/\"8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik="
+          "Value": "sha256-8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI="
         }
       ]
     },
@@ -5334,7 +5334,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3101"
+          "Value": "3585"
         },
         {
           "Name": "Content-Type",
@@ -5342,11 +5342,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=\""
+          "Value": "\"8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Dec 2024 18:49:48 GMT"
+          "Value": "Thu, 19 Dec 2024 22:53:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5356,7 +5356,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik="
+          "Value": "sha256-8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI="
         }
       ]
     },
@@ -5399,7 +5399,7 @@
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qpv22ndaq9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5408,7 +5408,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "827"
+          "Value": "934"
         },
         {
           "Name": "Content-Type",
@@ -5416,11 +5416,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=\""
+          "Value": "\"jPGAiPsTx036vRvBm+30oh0Qp9HtmJNMf+7PIyS4VcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Dec 2024 18:49:48 GMT"
+          "Value": "Thu, 19 Dec 2024 22:53:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5438,18 +5438,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM="
+          "Value": "sha256-jPGAiPsTx036vRvBm+30oh0Qp9HtmJNMf+7PIyS4VcI="
         }
       ]
     },
     {
-      "Route": "css/site.qiwehwffd9.css",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
+      "Route": "css/site.qpv22ndaq9.css",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qpv22ndaq9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001207729469"
+          "Quality": "0.001069518717"
         }
       ],
       "ResponseHeaders": [
@@ -5459,15 +5459,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "827"
+          "Value": "934"
         },
         {
           "Name": "ETag",
-          "Value": "\"+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=\""
+          "Value": "\"jPGAiPsTx036vRvBm+30oh0Qp9HtmJNMf+7PIyS4VcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Dec 2024 18:49:48 GMT"
+          "Value": "Thu, 19 Dec 2024 22:53:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5487,13 +5487,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=\""
+          "Value": "W/\"8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qiwehwffd9"
+          "Value": "qpv22ndaq9"
         },
         {
           "Name": "label",
@@ -5501,12 +5501,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik="
+          "Value": "sha256-8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI="
         }
       ]
     },
     {
-      "Route": "css/site.qiwehwffd9.css",
+      "Route": "css/site.qpv22ndaq9.css",
       "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -5516,7 +5516,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3101"
+          "Value": "3585"
         },
         {
           "Name": "Content-Type",
@@ -5524,11 +5524,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=\""
+          "Value": "\"8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Dec 2024 18:49:48 GMT"
+          "Value": "Thu, 19 Dec 2024 22:53:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5538,7 +5538,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qiwehwffd9"
+          "Value": "qpv22ndaq9"
         },
         {
           "Name": "label",
@@ -5546,13 +5546,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik="
+          "Value": "sha256-8qQF2Y9uDue4thxb6kI8wGgL6BysriVPvcF9PGuuzcI="
         }
       ]
     },
     {
-      "Route": "css/site.qiwehwffd9.css.gz",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
+      "Route": "css/site.qpv22ndaq9.css.gz",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qpv22ndaq9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5561,7 +5561,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "827"
+          "Value": "934"
         },
         {
           "Name": "Content-Type",
@@ -5569,11 +5569,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=\""
+          "Value": "\"jPGAiPsTx036vRvBm+30oh0Qp9HtmJNMf+7PIyS4VcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Dec 2024 18:49:48 GMT"
+          "Value": "Thu, 19 Dec 2024 22:53:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5591,7 +5591,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qiwehwffd9"
+          "Value": "qpv22ndaq9"
         },
         {
           "Name": "label",
@@ -5599,7 +5599,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM="
+          "Value": "sha256-jPGAiPsTx036vRvBm+30oh0Qp9HtmJNMf+7PIyS4VcI="
         }
       ]
     },

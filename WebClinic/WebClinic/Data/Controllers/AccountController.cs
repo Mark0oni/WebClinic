@@ -35,7 +35,7 @@ namespace WebClinic.Data.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Неверная почта или пароль!");
+                    TempData["ErrorMessage"] = "Неверная почта или пароль!";
                     return View(model);
                 }
             }
@@ -105,7 +105,7 @@ namespace WebClinic.Data.Controllers
 
                 if (user == null)
                 {
-                    ModelState.AddModelError("", "Неверная почта!");
+                    TempData["ErrorMessage"] = "Неверная почта!";
                     return View(model);
                 }
                 else
@@ -152,13 +152,13 @@ namespace WebClinic.Data.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Почта не зарегистрирована!");
+                    TempData["ErrorMessage"] = "Почта не зарегистрирована!";
                     return View(model);
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Что то не так! Попробуйте снова");
+                TempData["ErrorMessage"] = "Что то не так! Попробуйте снова";
                 return View(model);
             }
         }

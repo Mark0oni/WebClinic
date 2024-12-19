@@ -63,13 +63,13 @@ namespace WebClinic.Controllers
 
                 if (user == null)
                 {
-                    ModelState.AddModelError("Email", "Пользователь с таким email не найден.");
+                    TempData["ErrorMessage"] = "Пользователь с таким email не найден!";
                     return View(model);
                 }
 
                 if (user.LastName != model.LastName || user.FirstName != model.FirstName || user.MiddleName != model.MiddleName)
                 {
-                    ModelState.AddModelError("LastName", "ФИО не совпадает с данными пользователя.");
+                    TempData["ErrorMessage"] = "ФИО не совпадает с данными пользователя!";
                     return View(model);
                 }
 

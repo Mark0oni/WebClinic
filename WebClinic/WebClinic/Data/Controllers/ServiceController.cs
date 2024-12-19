@@ -58,7 +58,7 @@ namespace WebClinic.Controllers
 
             if (!doctors.Any())
             {
-                ModelState.AddModelError(string.Empty, "Нет доступных врачей. Пожалуйста, добавьте хотя бы одного врача.");
+                TempData["ErrorMessage"] = "Нет доступных врачей. Пожалуйста, добавьте хотя бы одного врача.";
             }
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -117,7 +117,7 @@ namespace WebClinic.Controllers
 
             if (!doctors.Any())
             {
-                ModelState.AddModelError(string.Empty, "Нет доступных врачей. Пожалуйста, добавьте хотя бы одного врача.");
+                TempData["ErrorMessage"] = "Нет доступных врачей. Пожалуйста, добавьте хотя бы одного врача.";
             }
 
             ViewBag.Doctors = new SelectList(doctors, "Id", "FullName");

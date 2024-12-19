@@ -6,6 +6,7 @@
 {
     @if (User.IsInRole("Админ"))
     {
+
         <li class="nav-item">
             <a class="nav-link" asp-controller="Service" asp-action="Index">Услуги</a>
         </li>
@@ -26,7 +27,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" asp-controller="Doctor" asp-action="Dashboard">Мой график</a>
+            <a class="nav-link" asp-controller="Schedule" asp-action="Index">Мой график</a>
         </li>
     }
 
@@ -37,18 +38,26 @@
         </li>
     }
 
+    else if (User.IsInRole("Гость"))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Account" asp-action="Logout">Выйти</a>
+        </li>
+    }
+
     <li class="nav-item">
         <a class="nav-link" asp-controller="Account" asp-action="Logout">Выйти</a>
     </li>
 }
+
 else
 {
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Login">Услуги</a>
+        <a class="nav-link" asp-controller="Service" asp-action="Index">Услуги</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Register">Расписание</a>
+        <a class="nav-link" asp-controller="Doctor" asp-action="Index">Врачи</a>
     </li>
     
     <li class="nav-item">
