@@ -21,7 +21,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
 // identity
-builder.Services.AddIdentity<Users, IdentityRole>(options =>
+builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 6;
@@ -69,7 +69,7 @@ using(var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-    var roles = new[] { "Admin", "Patient", "Doctor" };
+    var roles = new[] { "Админ", "Пациент", "Доктор", "Гость" };
 
     foreach (var role in roles)
     {
@@ -80,9 +80,9 @@ using(var scope = app.Services.CreateScope())
 
 using (var scope = app.Services.CreateScope())
 {
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Users>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
 
-    var user = new Users
+    var user = new User
     {
         LastName = "admin",
         FirstName = "admin",
@@ -95,7 +95,7 @@ using (var scope = app.Services.CreateScope())
 
     if (createResult.Succeeded)
     {
-        var roleResult = await userManager.AddToRoleAsync(user, "Admin");
+        var roleResult = await userManager.AddToRoleAsync(user, "Админ");
 
         if (!roleResult.Succeeded)
         {

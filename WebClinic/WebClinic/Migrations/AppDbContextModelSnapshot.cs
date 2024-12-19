@@ -39,12 +39,17 @@ namespace WebClinic.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AspNetRoles", (string)null);
                 });
@@ -155,13 +160,36 @@ namespace WebClinic.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.MedicalCard", b =>
+            modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Experience")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("PostName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Doctors");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.MedicalCard", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("IllnessHistory")
                         .IsRequired()
@@ -173,11 +201,6 @@ namespace WebClinic.Migrations
 
                     b.Property<string>("PolicyNumber")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -187,7 +210,51 @@ namespace WebClinic.Migrations
                     b.ToTable("MedicalCards", (string)null);
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.Users", b =>
+            modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Patients");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.Service", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Cabinet")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DoctorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ServiceName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -198,11 +265,6 @@ namespace WebClinic.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -267,56 +329,13 @@ namespace WebClinic.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator().HasValue("Users");
-
-                    b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
-                    b.HasBaseType("WebClinic.Data.Models.Users");
-
-                    b.Property<int>("Experience")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PostName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", t =>
-                        {
-                            t.Property("UserId")
-                                .HasColumnName("Doctor_UserId");
-                        });
-
-                    b.HasDiscriminator().HasValue("Doctor");
-                });
-
-            modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
-                {
-                    b.HasBaseType("WebClinic.Data.Models.Users");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
-
-                    b.HasDiscriminator().HasValue("Patient");
+                    b.HasOne("WebClinic.Data.Models.User", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -330,7 +349,7 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.Users", null)
+                    b.HasOne("WebClinic.Data.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -339,7 +358,7 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.Users", null)
+                    b.HasOne("WebClinic.Data.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -354,7 +373,7 @@ namespace WebClinic.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebClinic.Data.Models.Users", null)
+                    b.HasOne("WebClinic.Data.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -363,11 +382,22 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.Users", null)
+                    b.HasOne("WebClinic.Data.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
+                {
+                    b.HasOne("WebClinic.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.MedicalCard", b =>
@@ -381,31 +411,40 @@ namespace WebClinic.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
+            modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.Users", "User")
-                        .WithOne()
-                        .HasForeignKey("WebClinic.Data.Models.Doctor", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("WebClinic.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
+            modelBuilder.Entity("WebClinic.Data.Models.Service", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.Users", "User")
-                        .WithOne()
-                        .HasForeignKey("WebClinic.Data.Models.Patient", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.HasOne("WebClinic.Data.Models.Doctor", "Doctor")
+                        .WithMany("Services")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("User");
+                    b.Navigation("Doctor");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
+                {
+                    b.Navigation("Services");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
                 {
                     b.Navigation("MedicalCards");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.User", b =>
+                {
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

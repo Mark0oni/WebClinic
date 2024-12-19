@@ -3,16 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebClinic.Data.Models
 {
-    public class Patient : Users
+    public class Patient
     {
-        [Key]
-        public int Id { get; set; }
-        public ICollection<MedicalCard> MedicalCards { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public List<MedicalCard> MedicalCards { get; set; } = [];
 
-        [Required]
-        public string UserId { get; set; }
+        public required string UserId { get; set; }
 
-        [ForeignKey("UserId")]
-        public Users User { get; set; }
+        public User? User { get; set; }
     }
 }

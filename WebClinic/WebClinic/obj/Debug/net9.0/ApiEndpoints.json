@@ -11,22 +11,6 @@
   },
   {
     "ContainingType": "WebClinic.Controllers.DoctorController",
-    "Method": "Details",
-    "RelativePath": "admin/Doctor/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.DoctorController",
     "Method": "Create",
     "RelativePath": "admin/Doctor/create",
     "HttpMethod": "GET",
@@ -44,9 +28,39 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "doctor",
-        "Type": "WebClinic.Data.Models.Doctor",
-        "IsRequired": true
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MiddleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PostName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Experience",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Salary",
+        "Type": "System.Decimal",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -55,23 +69,7 @@
     "ContainingType": "WebClinic.Controllers.DoctorController",
     "Method": "Delete",
     "RelativePath": "admin/Doctor/delete/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.DoctorController",
-    "Method": "DeleteConfirmed",
-    "RelativePath": "admin/Doctor/delete/{id}",
-    "HttpMethod": "POST",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -113,9 +111,19 @@
         "IsRequired": true
       },
       {
-        "Name": "doctor",
-        "Type": "WebClinic.Data.Models.Doctor",
-        "IsRequired": true
+        "Name": "PostName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Experience",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Salary",
+        "Type": "System.Decimal",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -132,22 +140,6 @@
   },
   {
     "ContainingType": "WebClinic.Controllers.UserController",
-    "Method": "Details",
-    "RelativePath": "admin/User/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.UserController",
     "Method": "Create",
     "RelativePath": "admin/User/create",
     "HttpMethod": "GET",
@@ -165,9 +157,29 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "WebClinic.Data.ViewModels.User.UserViewModel",
-        "IsRequired": true
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MiddleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -177,22 +189,6 @@
     "Method": "Delete",
     "RelativePath": "admin/User/delete/{id}",
     "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.UserController",
-    "Method": "DeleteConfirmed",
-    "RelativePath": "admin/User/delete/{id}",
-    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -234,9 +230,158 @@
         "IsRequired": true
       },
       {
-        "Name": "model",
-        "Type": "WebClinic.Data.ViewModels.User.UserViewModel",
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MiddleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.ServiceController",
+    "Method": "Index",
+    "RelativePath": "Service",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.ServiceController",
+    "Method": "Create",
+    "RelativePath": "Service/create",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.ServiceController",
+    "Method": "Create",
+    "RelativePath": "Service/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ServiceName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cabinet",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cost",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "DoctorId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.ServiceController",
+    "Method": "Delete",
+    "RelativePath": "Service/delete/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.ServiceController",
+    "Method": "Edit",
+    "RelativePath": "Service/edit/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.ServiceController",
+    "Method": "Edit",
+    "RelativePath": "Service/edit/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "ServiceName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cabinet",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cost",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "DoctorId",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

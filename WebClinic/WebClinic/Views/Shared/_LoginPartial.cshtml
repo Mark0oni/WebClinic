@@ -1,11 +1,15 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using WebClinic.Data.Models
-@inject SignInManager<Users> signInManager
+@inject SignInManager<User> signInManager
 
 @if (signInManager.IsSignedIn(User))
 {
-    @if (User.IsInRole("Admin"))
+    @if (User.IsInRole("Админ"))
     {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Service" asp-action="Index">Услуги</a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" asp-controller="User" asp-action="Index">Пользователи</a>
         </li>
@@ -15,14 +19,18 @@
         </li>
     }
 
-    else if (User.IsInRole("Doctor"))
+    else if (User.IsInRole("Доктор"))
     {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Service" asp-action="Index">Мои услуги</a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" asp-controller="Doctor" asp-action="Dashboard">Мой график</a>
         </li>
     }
 
-    else if (User.IsInRole("Patient"))
+    else if (User.IsInRole("Пациент"))
     {
         <li class="nav-item">
             <a class="nav-link" asp-controller="Patient" asp-action="Appointments">Мои записи</a>

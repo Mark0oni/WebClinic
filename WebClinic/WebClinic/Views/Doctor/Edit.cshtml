@@ -1,0 +1,49 @@
+﻿@model WebClinic.Data.ViewModels.Doctor.EditDoctorViewModel;
+
+@{
+    ViewData["Title"] = "Редактирование врача";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-container">
+
+    <h2 class="form-title">@ViewData["Title"]</h2>
+    
+    <div class="form-box">
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="PostName" class="form-label"></label>
+                <input asp-for="PostName" class="form-control" />
+                <span asp-validation-for="PostName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Experience" class="form-label"></label>
+                <input asp-for="Experience" class="form-control" />
+                <span asp-validation-for="Experience" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Salary" class="form-label"></label>
+                <input asp-for="Salary" class="form-control" type="number" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            
+            <div class="form-btn">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <a href="@Url.Action("Index", "Doctor")" class="btn btn-secondary">Отмена</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}

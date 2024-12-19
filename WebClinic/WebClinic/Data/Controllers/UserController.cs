@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using WebClinic.Data.Context;
@@ -9,16 +10,16 @@ using WebClinic.Data.ViewModels.User;
 
 namespace WebClinic.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Админ")]
     [Route("admin/[controller]")]
     [ApiController]
     public class UserController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly UserManager<Users> _userManager;
+        private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserController(AppDbContext context, UserManager<Users> userManager, RoleManager<IdentityRole> roleManager)
+        public UserController(AppDbContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
             _userManager = userManager;
@@ -26,34 +27,30 @@ namespace WebClinic.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var users = _context.Users.Select(u => new UserViewModel
+            var users = await _context.Users.ToListAsync();
+
+            var userViewModels = new List<UserViewModel>();
+
+            foreach (var user in users)
             {
-                LastName = u.LastName,
-                FirstName = u.FirstName,
-                MiddleName = u.MiddleName,
-                Email = u.Email
-            }).ToList();
-            return View(users);
+                var roles = await _userManager.GetRolesAsync(user);
+
+                userViewModels.Add(new UserViewModel
+                {
+                    Id = user.Id,
+                    LastName = user.LastName,
+                    FirstName = user.FirstName,
+                    MiddleName = user.MiddleName,
+                    Email = user.Email,
+                    Roles = string.Join(", ", roles)
+                });
+            }
+
+            return View(userViewModels);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Details(string id)
-        {
-            var user = _context.Users.Select(u => new UserViewModel
-            {
-                LastName = u.LastName,
-                FirstName = u.FirstName,
-                MiddleName = u.MiddleName,
-                Email = u.Email
-            }).FirstOrDefault(u => u.Email == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return View(user);
-        }
 
         [HttpGet("create")]
         public IActionResult Create()
@@ -63,11 +60,11 @@ namespace WebClinic.Controllers
 
         [HttpPost("create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(UserViewModel model)
+        public async Task<IActionResult> Create([FromForm]CreateUserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new Users
+                var user = new User
                 {
                     UserName = model.Email,
                     Email = model.Email,
@@ -75,48 +72,54 @@ namespace WebClinic.Controllers
                     FirstName = model.FirstName,
                     MiddleName = model.MiddleName
                 };
+                
                 var result = await _userManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "Гость");
+
                     return RedirectToAction(nameof(Index));
                 }
+                
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+            
             return View(model);
         }
 
         [HttpGet("edit/{id}")]
         public IActionResult Edit(string id)
         {
-            var user = _context.Users.Select(u => new UserViewModel
-            {
-                LastName = u.LastName,
-                FirstName = u.FirstName,
-                MiddleName = u.MiddleName,
-                Email = u.Email
-            }).FirstOrDefault(u => u.Email == id);
+            
+            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            
             if (user == null)
             {
                 return NotFound();
             }
-            return View(user);
+            
+            return View(new EditUserViewModel
+            {
+                LastName = user.LastName,
+                FirstName = user.FirstName,
+                MiddleName = user.MiddleName,
+                Email = user.Email
+            });
         }
 
         [HttpPost("edit/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, UserViewModel model)
+        public async Task<IActionResult> Edit([FromRoute]string id, [FromForm]EditUserViewModel model)
         {
-            if (id != model.Email)
-            {
-                return BadRequest();
-            }
-
+  
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(id);
+                var user = await _userManager.FindByIdAsync(id);
+                
                 if (user == null)
                 {
                     return NotFound();
@@ -128,12 +131,16 @@ namespace WebClinic.Controllers
                 user.Email = model.Email;
                 user.UserName = model.Email;
 
+                if (model.Password != null) 
+                {
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    await _userManager.ResetPasswordAsync(user, token, model.Password);
+                }
+
                 var result = await _userManager.UpdateAsync(user);
+                
                 if (result.Succeeded)
                 {
-                    var roles = await _userManager.GetRolesAsync(user);
-                    await _userManager.RemoveFromRolesAsync(user, roles);
-                    await _userManager.AddToRoleAsync(user, model.SelectedRole);
 
                     return RedirectToAction(nameof(Index));
                 }
@@ -143,48 +150,25 @@ namespace WebClinic.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+            
             return View(model);
         }
 
 
         [HttpGet("delete/{id}")]
-        public IActionResult Delete(string id)
+        public async Task<IActionResult> Delete([FromRoute] string id)
         {
-            var user = _context.Users.Select(u => new UserViewModel
-            {
-                LastName = u.LastName,
-                FirstName = u.FirstName,
-                MiddleName = u.MiddleName,
-                Email = u.Email
-            }).FirstOrDefault(u => u.Email == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return View(user);
-        }
+            var user = await _context.Users.FirstOrDefaultAsync(d => d.Id == id);
 
-        [HttpPost("delete/{id}")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var user = await _userManager.FindByEmailAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            var result = await _userManager.DeleteAsync(user);
-            if (result.Succeeded)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
-            return View();
-        }
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
 
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

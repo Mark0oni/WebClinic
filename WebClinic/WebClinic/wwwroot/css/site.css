@@ -2,6 +2,10 @@
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+html {
+    font-size: 20px;
+}
+
 body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
@@ -9,9 +13,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-size: 1rem;
 }
 
 .navbar {
+    font-size: 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -88,7 +94,7 @@ body {
 }
 
 .content {
-    margin: 70px auto 0 auto;
+    margin: 90px auto 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,7 +115,59 @@ body {
 }
 
 .form-title {
+    text-align: center;
+}
+
+.form-btn {
+    display: flex;
+    gap: 15px;
+}
+
+.form-btn {
+
+}
+
+.table-container {
+    padding: 30px 40px 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+
+}
+
+.table-box {
+    padding: 15px 0 0 0;
+    width: auto;
+}
+
+.table-title {
+    text-align: center;
     margin-bottom: 25px;
+}
+
+.table-btn {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.table-btn-create {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    padding: 5px;
+}
+
+.table-btn-create p {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.table-btn-create .btn {
+    width: auto;
 }
 
 .a-link {
@@ -118,13 +176,13 @@ body {
 }
 
 .btn {
+    width: 100%;
     padding: 8px;
     color: white;
     border: none;
     transition: all 0.3s ease-in-out;
     white-space: nowrap;
     cursor: pointer;
-    width: 100%;
 }
 
 .btn:hover {

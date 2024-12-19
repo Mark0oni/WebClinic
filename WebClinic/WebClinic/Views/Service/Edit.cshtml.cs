@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebClinic.Views.User
+namespace WebClinic.Views.Service
 {
-    public class DeleteModel : PageModel
+    public class EditModel : PageModel
     {
         public void OnGet()
         {

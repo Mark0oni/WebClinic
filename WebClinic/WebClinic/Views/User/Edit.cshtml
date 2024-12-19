@@ -1,55 +1,61 @@
-﻿@model WebClinic.Data.ViewModels.User.UserViewModel
+﻿@model WebClinic.Data.ViewModels.User.EditUserViewModel;
 
 @{
-    ViewData["Title"] = "Редактировать пользователя";
+    ViewData["Title"] = "Редактирование пользователя";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="form-container">
 
-<h4>Редактирование пользователя</h4>
-<hr />
+    <h2 class="form-title">@ViewData["Title"]</h2>
+    
+    <div class="form-box">
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
 
-<form asp-action="Edit" method="post">
-    @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="form-group">
-        <label for="LastName">Фамилия</label>
-        <input type="text" asp-for="LastName" class="form-control" />
-        <span asp-validation-for="LastName" class="text-danger"></span>
+            <div class="mb-3">
+                <label for="LastName">Фамилия</label>
+                <input type="text" asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="FirstName">Имя</label>
+                <input type="text" asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="MiddleName">Отчество</label>
+                <input type="text" asp-for="MiddleName" class="form-control" />
+                <span asp-validation-for="MiddleName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="Email">Почта</label>
+                <input type="email" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            
+            <div class="form-btn">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <a href="@Url.Action("Index", "User")" class="btn btn-secondary">Отмена</a>
+            </div>
+
+        </form>
     </div>
+</div>
 
-    <div class="form-group">
-        <label for="FirstName">Имя</label>
-        <input type="text" asp-for="FirstName" class="form-control" />
-        <span asp-validation-for="FirstName" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label for="MiddleName">Отчество</label>
-        <input type="text" asp-for="MiddleName" class="form-control" />
-        <span asp-validation-for="MiddleName" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label for="Email">Почта</label>
-        <input type="email" asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label for="Password">Пароль</label>
-        <input type="password" asp-for="Password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
-        <a href="@Url.Action("Index", "User")" class="btn btn-secondary">Отмена</a>
-    </div>
-</form>
-
-@section Scripts {
+@section Scripts{
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
     }
 }

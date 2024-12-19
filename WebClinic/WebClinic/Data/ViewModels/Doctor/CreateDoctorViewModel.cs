@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebClinic.Data.ViewModels.Doctor
 {
-    public class DoctorViewModel
+    public class CreateDoctorViewModel
     {
-        public string? Id { get; set; }
 
         [Required(ErrorMessage = "Это поле обязательно")]
         [StringLength(50, ErrorMessage = "Фамилия не может превышать 50 символов")]

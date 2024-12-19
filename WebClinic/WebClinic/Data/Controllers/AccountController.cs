@@ -8,10 +8,10 @@ namespace WebClinic.Data.Controllers
 
     public class AccountController : Controller
     {
-        private readonly SignInManager<Users> signInManager;
-        private readonly UserManager<Users> userManager;
+        private readonly SignInManager<User> signInManager;
+        private readonly UserManager<User> userManager;
 
-        public AccountController(SignInManager<Users> signInManager, UserManager<Users> userManager)
+        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
@@ -52,7 +52,7 @@ namespace WebClinic.Data.Controllers
         {
             if (ModelState.IsValid)
             {
-                Users users = new Users
+                User users = new User
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
@@ -65,7 +65,7 @@ namespace WebClinic.Data.Controllers
 
                 if (result.Succeeded)
                 {
-                    var roleResult = await userManager.AddToRoleAsync(users, "Patient");
+                    var roleResult = await userManager.AddToRoleAsync(users, "Гость");
 
                     if (!roleResult.Succeeded)
                     {

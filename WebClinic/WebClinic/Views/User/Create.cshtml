@@ -1,13 +1,13 @@
-﻿@model WebClinic.Data.ViewModels.Doctor.CreateDoctorViewModel;
+﻿@model WebClinic.Data.ViewModels.User.CreateUserViewModel;
 
 @{
-    ViewData["Title"] = "Врачи";
+    ViewData["Title"] = "Пользователи";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="form-container">
 
-    <h2 class="form-title">Добавление врача</h2>
+    <h2 class="form-title">Добавление пользователя</h2>
     
     <div class="form-box">
         <form asp-action="Create" method="post">
@@ -36,28 +36,16 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            
-            <div class="mb-3">
-                <label asp-for="PostName" class="form-label"></label>
-                <input asp-for="PostName" class="form-control" />
-                <span asp-validation-for="PostName" class="text-danger"></span>
-            </div>
 
             <div class="mb-3">
-                <label asp-for="Experience" class="form-label"></label>
-                <input asp-for="Experience" class="form-control" />
-                <span asp-validation-for="Experience" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Salary" class="form-label"></label>
-                <input asp-for="Salary" class="form-control" />
-                <span asp-validation-for="Salary" class="text-danger"></span>
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             
             <div class="form-btn">
                 <button type="submit" class="btn btn-primary">Добавить</button>
-                <a href="@Url.Action("Index", "Doctor")" class="btn btn-secondary">Отмена</a>
+                <a href="@Url.Action("Index", "User")" class="btn btn-secondary">Отмена</a>
             </div>
 
         </form>

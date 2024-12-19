@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mXhaTmDfrT/IgqHUj3RBHUnpSSb5zg8jFJSFJNBHJ2U=",
+  "Hash": "JfZ03GrqCuyqgK86SZzCUravqnegtEnVeEHwH94lAgc=",
   "Source": "WebClinic",
   "BasePath": "_content/WebClinic",
   "Mode": "Default",
@@ -1613,12 +1613,12 @@
       "OriginalItemSpec": "C:\\Users\\Влад Сергеев\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\9.0.0\\staticwebassets\\V5\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-2yet2jadbe.gz",
+      "Identity": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
       "SourceId": "WebClinic",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/WebClinic",
-      "RelativePath": "css/site#[.{fingerprint=2yet2jadbe}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=qiwehwffd9}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1627,8 +1627,8 @@
       "RelatedAsset": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "tkw8owvd8z",
-      "Integrity": "E+FtYbo2rbH556HxtJptUw5/fKIJ8xCVGAiGKkiC9ZA=",
+      "Fingerprint": "7l4vosgtrh",
+      "Integrity": "+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\wwwroot\\css\\site.css"
@@ -2677,8 +2677,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "2yet2jadbe",
-      "Integrity": "FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs=",
+      "Fingerprint": "qiwehwffd9",
+      "Integrity": "3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -5269,174 +5269,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.2yet2jadbe.css",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-2yet2jadbe.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001408450704"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "709"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"E+FtYbo2rbH556HxtJptUw5/fKIJ8xCVGAiGKkiC9ZA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 12 Dec 2024 22:33:23 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "2yet2jadbe"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.2yet2jadbe.css",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2349"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 12 Dec 2024 22:33:23 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "2yet2jadbe"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.2yet2jadbe.css.gz",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-2yet2jadbe.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "709"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"E+FtYbo2rbH556HxtJptUw5/fKIJ8xCVGAiGKkiC9ZA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 12 Dec 2024 22:33:23 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "2yet2jadbe"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-E+FtYbo2rbH556HxtJptUw5/fKIJ8xCVGAiGKkiC9ZA="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-2yet2jadbe.gz",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001408450704"
+          "Quality": "0.001207729469"
         }
       ],
       "ResponseHeaders": [
@@ -5446,15 +5285,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "709"
+          "Value": "827"
         },
         {
           "Name": "ETag",
-          "Value": "\"E+FtYbo2rbH556HxtJptUw5/fKIJ8xCVGAiGKkiC9ZA=\""
+          "Value": "\"+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Dec 2024 22:33:23 GMT"
+          "Value": "Thu, 19 Dec 2024 17:59:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5474,13 +5313,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs=\""
+          "Value": "W/\"3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs="
+          "Value": "sha256-3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik="
         }
       ]
     },
@@ -5495,7 +5334,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2349"
+          "Value": "3101"
         },
         {
           "Name": "Content-Type",
@@ -5503,11 +5342,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs=\""
+          "Value": "\"3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Dec 2024 22:33:23 GMT"
+          "Value": "Thu, 19 Dec 2024 17:59:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5517,7 +5356,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-FsEKJ127OiCLEp3MvPCYtdpDVZJ+pTfp2dQvdaViaRs="
+          "Value": "sha256-3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik="
         }
       ]
     },
@@ -5560,7 +5399,7 @@
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-2yet2jadbe.gz",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5569,7 +5408,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "709"
+          "Value": "827"
         },
         {
           "Name": "Content-Type",
@@ -5577,11 +5416,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"E+FtYbo2rbH556HxtJptUw5/fKIJ8xCVGAiGKkiC9ZA=\""
+          "Value": "\"+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Dec 2024 22:33:23 GMT"
+          "Value": "Thu, 19 Dec 2024 17:59:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5599,7 +5438,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-E+FtYbo2rbH556HxtJptUw5/fKIJ8xCVGAiGKkiC9ZA="
+          "Value": "sha256-+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.qiwehwffd9.css",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001207729469"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "827"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 19 Dec 2024 17:59:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qiwehwffd9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.qiwehwffd9.css",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3101"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 19 Dec 2024 17:59:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qiwehwffd9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3oJUaHfcEdqCxtWuidm+UVPpy7fTQDlrj5BNECXCQik="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.qiwehwffd9.css.gz",
+      "AssetFile": "C:\\Project\\WebClinic\\WebClinic\\WebClinic\\obj\\Debug\\net9.0\\compressed\\o4p3l1l4q6-qiwehwffd9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "827"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 19 Dec 2024 17:59:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qiwehwffd9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+3CEG5A5r9AR+9LXK7iHx8pakHCRdUhx+ANo8HhcABM="
         }
       ]
     },
@@ -34117,7 +34117,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34170,7 +34170,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34207,7 +34207,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34254,7 +34254,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34315,7 +34315,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34360,7 +34360,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34415,7 +34415,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34476,7 +34476,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34521,7 +34521,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34576,7 +34576,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34629,7 +34629,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34666,7 +34666,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Dec 2024 16:50:35 GMT"
+          "Value": "Wed, 18 Dec 2024 10:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
