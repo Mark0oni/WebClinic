@@ -17,93 +17,93 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebClinic
 build_property.RootNamespace = WebClinic
-build_property.ProjectDir = C:\FILES\university\5semester\TP\kursac\WebClinic\WebClinic\
+build_property.ProjectDir = C:\Project\WebClinic\WebClinic\WebClinic\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\FILES\university\5semester\TP\kursac\WebClinic\WebClinic
+build_property.MSBuildProjectDirectory = C:\Project\WebClinic\WebClinic\WebClinic
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Account/ChangePassword.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Account/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Account/Login.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Account/Register.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Account/VerifyEmail.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Account/VerifyEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZnlFbWFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Doctor/Create.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Doctor/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Doctor/Edit.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Doctor/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Doctor/Index.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Doctor/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Home/Error.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Home/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Home/Index.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Service/Create.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Service/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Service/Edit.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Service/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Service/Index.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Service/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Shared/_LoginPartial.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/User/Create.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/User/Edit.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/User/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/User/Index.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/_ViewImports.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/_ViewStart.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FILES/university/5semester/TP/kursac/WebClinic/WebClinic/Views/Shared/_Layout.cshtml]
+[C:/Project/WebClinic/WebClinic/WebClinic/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7ngky7myxj
