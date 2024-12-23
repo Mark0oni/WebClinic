@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Rewrite;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,6 +22,8 @@ namespace WebClinic.Data.Models
         public List<Service> Services { get; set; } = [];
 
         public List<Schedule> Schedules { get; set; } = [];
+
+        public List<Appointment> Appointments { get; set; } = [];
     }
 
 }

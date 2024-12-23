@@ -73,6 +73,12 @@ namespace WebClinic.Controllers
                     return View(model);
                 }
 
+                if (await _context.Doctors.AnyAsync(d => d.UserId == user.Id))
+                {
+                    TempData["ErrorMessage"] = "Этот пользователь уже зарегистрирован как врач!";
+                    return View(model);
+                }
+
                 var doctor = new Doctor
                 {
                     PostName = model.PostName,
@@ -83,7 +89,13 @@ namespace WebClinic.Controllers
 
                 _context.Doctors.Add(doctor);
 
-                await _userManager.RemoveFromRoleAsync(user, "Гость");
+                var removeGuestResult = await _userManager.RemoveFromRoleAsync(user, "Гость");
+                if (!removeGuestResult.Succeeded)
+                {
+                    TempData["ErrorMessage"] = "Не удалось удалить роль 'Гость'.";
+                    return View(model);
+                }
+
                 await _userManager.RemoveFromRoleAsync(user, "Пациент");
                 await _userManager.AddToRoleAsync(user, "Доктор");
 
@@ -149,6 +161,7 @@ namespace WebClinic.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             var doctor = await _context.Doctors
+                .Include(d => d.Appointments)
                 .Include(d => d.User)
                 .FirstOrDefaultAsync(d => d.Id == id);
 

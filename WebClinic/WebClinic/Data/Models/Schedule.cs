@@ -20,5 +20,7 @@
 
         public Service Service { get; set; }
 
+        public string? AppointmentId { get; set; }
+        public Appointment? Appointment { get; set; }
     }
 }
