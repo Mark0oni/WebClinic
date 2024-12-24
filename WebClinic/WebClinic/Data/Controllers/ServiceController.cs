@@ -126,7 +126,7 @@ namespace WebClinic.Controllers
         }
 
         [HttpGet("edit/{id}")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             var service = await _context.Services
                 .Include(s => s.Doctor)
@@ -163,7 +163,7 @@ namespace WebClinic.Controllers
 
         [HttpPost("edit/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [FromForm] EditServiceViewModel model)
+        public async Task<IActionResult> Edit(Guid id, [FromForm] EditServiceViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -204,9 +204,10 @@ namespace WebClinic.Controllers
 
 
         [HttpGet("delete/{id}")]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var service = await _context.Services.FindAsync(id);
+            var service = await _context.Services
+                .FirstOrDefaultAsync(s => s.Id == id);
 
             if (service == null)
             {

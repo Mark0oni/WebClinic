@@ -34,14 +34,14 @@
     else if (User.IsInRole("Пациент"))
     {
         <li class="nav-item">
-            <a class="nav-link" asp-controller="Patient" asp-action="Appointments">Мои записи</a>
+            <a class="btn btn-primary" asp-controller="Patient" asp-action="Index">Записаться на прием</a>
         </li>
     }
 
     else if (User.IsInRole("Гость"))
     {
         <li class="nav-item">
-            <a class="btn btn-primary" asp-controller="MedicalCard" asp-action="Create">Оформить мед. карту</a>
+            <a class="btn btn-primary" asp-controller="Patient" asp-action="Create">Оформить профиль пациента</a>
         </li>
     }
 
@@ -52,14 +52,7 @@
 
 else
 {
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Service" asp-action="Index">Услуги</a>
-    </li>
 
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Doctor" asp-action="Index">Врачи</a>
-    </li>
-    
     <li class="nav-item">
         <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
     </li>

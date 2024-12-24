@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebClinic.Migrations
 {
     /// <inheritdoc />
-    public partial class ClinicDbMigration : Migration
+    public partial class InitMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,18 +37,6 @@ namespace WebClinic.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MedicalCards",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PatientId = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MedicalCards", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,7 +124,7 @@ namespace WebClinic.Migrations
                 name: "Doctors",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PostName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Experience = table.Column<int>(type: "int", nullable: false),
                     Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -157,12 +145,11 @@ namespace WebClinic.Migrations
                 name: "Patients",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Weight = table.Column<int>(type: "int", nullable: true),
                     Height = table.Column<int>(type: "int", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MedicalCardId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -173,12 +160,6 @@ namespace WebClinic.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Patients_MedicalCards_MedicalCardId",
-                        column: x => x.MedicalCardId,
-                        principalTable: "MedicalCards",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,43 +208,15 @@ namespace WebClinic.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MedicalRecord",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RecordDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Diagnosis = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Prescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MedicalCardId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MedicalRecord", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MedicalRecord_Doctors_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MedicalRecord_MedicalCards_MedicalCardId",
-                        column: x => x.MedicalCardId,
-                        principalTable: "MedicalCards",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Services",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ServiceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Cabinet = table.Column<int>(type: "int", nullable: false),
-                    DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -277,17 +230,34 @@ namespace WebClinic.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MedicalCards",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PatientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MedicalCards", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MedicalCards_Patients_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "Patients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Schedules",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     EndTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     IsAvailable = table.Column<bool>(type: "bit", nullable: false),
-                    DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ServiceId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AppointmentId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -296,8 +266,7 @@ namespace WebClinic.Migrations
                         name: "FK_Schedules_Doctors_DoctorId",
                         column: x => x.DoctorId,
                         principalTable: "Doctors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Schedules_Services_ServiceId",
                         column: x => x.ServiceId,
@@ -310,42 +279,65 @@ namespace WebClinic.Migrations
                 name: "Appointments",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AppointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    Conclusion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Prescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PatientId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ScheduleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    PatientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ScheduleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MedicalCardId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Appointments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Appointments_Doctors_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Appointments_MedicalCards_MedicalCardId",
+                        column: x => x.MedicalCardId,
+                        principalTable: "MedicalCards",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Appointments_Patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patients",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Appointments_Schedules_ScheduleId",
                         column: x => x.ScheduleId,
                         principalTable: "Schedules",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AppointmentResults",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RecordDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Diagnosis = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Prescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AppointmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppointmentResults", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppointmentResults_Appointments_AppointmentId",
+                        column: x => x.AppointmentId,
+                        principalTable: "Appointments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appointments_DoctorId",
+                name: "IX_AppointmentResults_AppointmentId",
+                table: "AppointmentResults",
+                column: "AppointmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_MedicalCardId",
                 table: "Appointments",
-                column: "DoctorId");
+                column: "MedicalCardId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_PatientId",
@@ -355,8 +347,7 @@ namespace WebClinic.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_ScheduleId",
                 table: "Appointments",
-                column: "ScheduleId",
-                unique: true);
+                column: "ScheduleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -408,20 +399,9 @@ namespace WebClinic.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MedicalRecord_DoctorId",
-                table: "MedicalRecord",
-                column: "DoctorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MedicalRecord_MedicalCardId",
-                table: "MedicalRecord",
-                column: "MedicalCardId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Patients_MedicalCardId",
-                table: "Patients",
-                column: "MedicalCardId",
-                unique: true);
+                name: "IX_MedicalCards_PatientId",
+                table: "MedicalCards",
+                column: "PatientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Patients_UserId",
@@ -429,10 +409,9 @@ namespace WebClinic.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Schedule_Doctor_Time",
+                name: "IX_Schedules_DoctorId",
                 table: "Schedules",
-                columns: new[] { "DoctorId", "StartTime", "EndTime" },
-                unique: true);
+                column: "DoctorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Schedules_ServiceId",
@@ -449,7 +428,7 @@ namespace WebClinic.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Appointments");
+                name: "AppointmentResults");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -467,19 +446,19 @@ namespace WebClinic.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "MedicalRecord");
-
-            migrationBuilder.DropTable(
-                name: "Patients");
-
-            migrationBuilder.DropTable(
-                name: "Schedules");
+                name: "Appointments");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "MedicalCards");
+
+            migrationBuilder.DropTable(
+                name: "Schedules");
+
+            migrationBuilder.DropTable(
+                name: "Patients");
 
             migrationBuilder.DropTable(
                 name: "Services");

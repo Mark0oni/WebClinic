@@ -2,7 +2,7 @@
 {
     public class Service
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public required string ServiceName { get; set; }
 
@@ -12,7 +12,7 @@
 
         public required int Cabinet { get; set; }
 
-        public string? DoctorId { get; set; }
+        public Guid? DoctorId { get; set; }
 
         public Doctor? Doctor { get; set; }
 

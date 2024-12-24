@@ -2,18 +2,18 @@
 {
     public class MedicalCard
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public required string PatientId { get; set; }
+        public required Guid PatientId { get; set; }
 
-        public Patient Patient { get; set; }
+        public Patient? Patient { get; set; }
 
-        public List<MedicalRecord> Records { get; set; } = new();
+        public List<Appointment> Appointments { get; set; } = [];
     }
 
-    public class MedicalRecord
+    public class AppointmentResult
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public required DateTime RecordDate { get; set; }
 
@@ -21,12 +21,8 @@
 
         public string? Prescription { get; set; }
 
-        public required string DoctorId { get; set; }
-
-        public Doctor Doctor { get; set; }
-
-        public required string MedicalCardId { get; set; }
+        public required Guid AppointmentId { get; set; }
         
-        public MedicalCard MedicalCard { get; set; }
+        public Appointment? Appointment { get; set; }
     }
 }

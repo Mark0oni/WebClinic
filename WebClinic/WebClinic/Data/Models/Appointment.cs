@@ -9,26 +9,20 @@
 
     public class Appointment
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public Guid Id { get; set; } = Guid.NewGuid();
         
-        public required DateTime AppointmentDate { get; set; } // Дата записи
+        public required DateTime AppointmentDate { get; set; }
 
         public AppointmentStatus Status { get; set; } = AppointmentStatus.Scheduled;
 
-        public string? Conclusion { get; set; } // Заключение врача
-        
-        public string? Prescription { get; set; } // Рецепт лекарств
+        public required Guid PatientId { get; set; }
 
-        public required string PatientId { get; set; }
+        public Patient? Patient { get; set; }
 
-        public Patient Patient { get; set; }
+        public required Guid ScheduleId { get; set; }
 
-        public required string DoctorId { get; set; }
+        public Schedule? Schedule { get; set; }
 
-        public Doctor Doctor { get; set; }
-
-        public required string ScheduleId { get; set; }
-
-        public Schedule Schedule { get; set; }
+        public List<AppointmentResult> AppointmentResults { get; set; } = [];
     }
 }

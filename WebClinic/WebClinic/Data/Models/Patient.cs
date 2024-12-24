@@ -6,7 +6,7 @@ namespace WebClinic.Data.Models
 {
     public class Patient
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public required DateTime DateOfBirth { get; set; }
 
@@ -18,9 +18,7 @@ namespace WebClinic.Data.Models
 
         public User? User { get; set; }
 
-        public required string MedicalCardId { get; set; }
-
-        public MedicalCard MedicalCard { get; set; }
+        public List<MedicalCard> MedicalCards { get; set; } = [];
 
         public List<Appointment> Appointments { get; set; } = []; 
     }

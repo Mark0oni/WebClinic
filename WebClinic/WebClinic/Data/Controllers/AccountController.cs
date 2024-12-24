@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebClinic.Data.Context;
 using WebClinic.Data.Models;
 using WebClinic.Data.ViewModels.Account;
 
@@ -8,13 +10,15 @@ namespace WebClinic.Data.Controllers
 
     public class AccountController : Controller
     {
-        private readonly SignInManager<User> signInManager;
-        private readonly UserManager<User> userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly AppDbContext _context;
 
-        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager)
+        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, AppDbContext context)
         {
-            this.signInManager = signInManager;
-            this.userManager = userManager;
+            this._signInManager = signInManager;
+            this._userManager = userManager;
+            this._context = context;
         }
 
         public IActionResult Login()
@@ -27,7 +31,7 @@ namespace WebClinic.Data.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
                 if (result.Succeeded)
                 {
@@ -61,11 +65,11 @@ namespace WebClinic.Data.Controllers
                     UserName = model.Email,
                 };
 
-                var result = await userManager.CreateAsync(users, model.Password);
+                var result = await _userManager.CreateAsync(users, model.Password);
 
                 if (result.Succeeded)
                 {
-                    var roleResult = await userManager.AddToRoleAsync(users, "Гость");
+                    var roleResult = await _userManager.AddToRoleAsync(users, "Гость");
 
                     if (!roleResult.Succeeded)
                     {
@@ -101,7 +105,7 @@ namespace WebClinic.Data.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await userManager.FindByNameAsync(model.Email);
+                var user = await _userManager.FindByNameAsync(model.Email);
 
                 if (user == null)
                 {
@@ -130,13 +134,13 @@ namespace WebClinic.Data.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await userManager.FindByNameAsync(model.Email);
+                var user = await _userManager.FindByNameAsync(model.Email);
                 if (user != null)
                 {
-                    var result = await userManager.RemovePasswordAsync(user);
+                    var result = await _userManager.RemovePasswordAsync(user);
                     if (result.Succeeded)
                     {
-                        result = await userManager.AddPasswordAsync(user, model.NewPassword);
+                        result = await _userManager.AddPasswordAsync(user, model.NewPassword);
                         return RedirectToAction("Login", "Account");
                     }
                     else
@@ -165,7 +169,7 @@ namespace WebClinic.Data.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            await signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
     }

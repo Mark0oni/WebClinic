@@ -125,7 +125,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -145,7 +146,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -197,7 +199,7 @@
       }
     },
     "/admin/Doctor/delete/{id}": {
-      "delete": {
+      "get": {
         "tags": [
           "Doctor"
         ],
@@ -207,9 +209,85 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Patient/create": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "DateOfBirth"
+                ],
+                "type": "object",
+                "properties": {
+                  "DateOfBirth": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Weight": {
+                    "maximum": 200,
+                    "minimum": 30,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Height": {
+                    "maximum": 250,
+                    "minimum": 30,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "DateOfBirth": {
+                  "style": "form"
+                },
+                "Weight": {
+                  "style": "form"
+                },
+                "Height": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Patient/index": {
+      "get": {
+        "tags": [
+          "Patient"
         ],
         "responses": {
           "200": {
@@ -274,7 +352,8 @@
                     "type": "boolean"
                   },
                   "ServiceId": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "uuid"
                   }
                 }
               },
@@ -316,7 +395,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -336,7 +416,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -369,10 +450,12 @@
                     "type": "boolean"
                   },
                   "ServiceId": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "uuid"
                   },
                   "DoctorId": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "uuid"
                   }
                 }
               },
@@ -417,7 +500,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -487,7 +571,8 @@
                     "format": "double"
                   },
                   "DoctorId": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "uuid"
                   }
                 }
               },
@@ -529,7 +614,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -549,7 +635,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -585,7 +672,8 @@
                     "format": "double"
                   },
                   "DoctorId": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "uuid"
                   }
                 }
               },
@@ -627,7 +715,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],

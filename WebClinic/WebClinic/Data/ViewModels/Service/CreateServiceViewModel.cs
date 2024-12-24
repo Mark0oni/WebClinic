@@ -27,6 +27,6 @@ namespace WebClinic.Data.ViewModels.Service
         public required decimal Cost { get; set; }
 
         [Display(Name = "Врач")]
-        public string? DoctorId { get; set; }
+        public Guid? DoctorId { get; set; }
     }
 }

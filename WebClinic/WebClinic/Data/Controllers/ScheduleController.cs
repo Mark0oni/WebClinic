@@ -28,11 +28,11 @@ namespace WebClinic.Controllers
         public async Task<IActionResult> Index()
         {
             var schedules = await _context.Schedules
-                .Include(s => s.Doctor)
                 .Include(s => s.Service)
+                .ThenInclude(s => s.Doctor)
                 .Select(s => new ScheduleViewModel
                 {
-                    Id = s.Id,
+                    Id = s.Id.ToString(),
                     Date = s.Date,
                     StartTime = s.StartTime,
                     EndTime = s.EndTime,
@@ -134,7 +134,6 @@ namespace WebClinic.Controllers
                         StartTime = model.StartTime,
                         EndTime = model.EndTime,
                         IsAvailable = model.IsAvailable,
-                        DoctorId = currentDoctor.Id,
                         ServiceId = model.ServiceId
                     };
 
@@ -149,10 +148,9 @@ namespace WebClinic.Controllers
         }
 
         [HttpGet("edit/{id}")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             var schedule = await _context.Schedules
-                .Include(s => s.Doctor)
                 .Include(s => s.Service)
                 .FirstOrDefaultAsync(s => s.Id == id);
 
@@ -168,11 +166,11 @@ namespace WebClinic.Controllers
                 EndTime = schedule.EndTime,
                 IsAvailable = schedule.IsAvailable,
                 ServiceId = schedule.ServiceId,
-                DoctorId = schedule.Doctor.Id,
+                DoctorId = schedule.Service!.DoctorId,
             };
 
             var services = await _context.Services
-                .Where(s => s.DoctorId == schedule.DoctorId)
+                .Where(s => s.DoctorId == schedule.Service!.DoctorId)
                 .ToListAsync();
 
             ViewBag.Services = new SelectList(services, "Id", "ServiceName", model.ServiceId);
@@ -182,7 +180,7 @@ namespace WebClinic.Controllers
 
         [HttpPost("edit/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [FromForm] EditScheduleViewModel model)
+        public async Task<IActionResult> Edit(Guid id, [FromForm] EditScheduleViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -200,7 +198,6 @@ namespace WebClinic.Controllers
                 }
 
                 var schedule = await _context.Schedules
-                    .Include(s => s.Doctor)
                     .FirstOrDefaultAsync(s => s.Id == id);
 
                 if (schedule == null)
@@ -231,16 +228,21 @@ namespace WebClinic.Controllers
 
 
         [HttpGet("delete/{id}")]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var schedule = await _context.Schedules
-                .Include(s => s.Doctor)
-                .Include(s => s.Service)
+                .Include(a => a.Appointments)
                 .FirstOrDefaultAsync(s => s.Id == id);
 
             if (schedule == null)
             {
                 return NotFound();
+            }
+
+            if (schedule.Appointments.Any()) 
+            {
+                TempData["ErrorMessage"] = "Нельзя удалить слот расписания, потому что уже есть запись.";
+                return BadRequest();
             }
 
             _context.Schedules.Remove(schedule);

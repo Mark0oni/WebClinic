@@ -2,25 +2,20 @@
 {
     public class Schedule
     {
-        public string Id {  get; set; } = Guid.NewGuid().ToString();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public required DateTime Date { get; set; }
         
         public required TimeSpan StartTime { get; set; }
         
-        public required TimeSpan EndTime { get; set; }  
+        public required TimeSpan EndTime { get; set; }
 
-        public required bool IsAvailable { get; set; }
+        public required bool IsAvailable { get; set; } = true;
 
-        public required string DoctorId { get; set; }
+        public required Guid ServiceId { get; set; }
 
-        public Doctor Doctor { get; set; }
+        public Service? Service { get; set; }
 
-        public required string ServiceId { get; set; }
-
-        public Service Service { get; set; }
-
-        public string? AppointmentId { get; set; }
-        public Appointment? Appointment { get; set; }
+        public List<Appointment> Appointments { get; set; } = [];
     }
 }

@@ -26,8 +26,8 @@ namespace WebClinic.Data.ViewModels.Schedule
 
         [Required(ErrorMessage = "Это поле обязательно")]
         [DisplayName("Услуга")]
-        public required string ServiceId { get; set; }
+        public required Guid ServiceId { get; set; }
 
-        public string? DoctorId { get; set; }
+        public Guid? DoctorId { get; set; }
     }
 }

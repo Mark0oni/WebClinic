@@ -7,7 +7,7 @@ namespace WebClinic.Data.Models
 {
     public class Doctor
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public required string PostName { get; set; }
 
@@ -22,8 +22,6 @@ namespace WebClinic.Data.Models
         public List<Service> Services { get; set; } = [];
 
         public List<Schedule> Schedules { get; set; } = [];
-
-        public List<Appointment> Appointments { get; set; } = [];
     }
 
 }

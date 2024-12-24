@@ -6,7 +6,7 @@ namespace WebClinic.Data.ViewModels.Service
 {
     public class ServiceViewModel
     {
-        public string? Id { get; set; }
+        public required Guid Id { get; set; }
 
         [Required(ErrorMessage = "Это поле обязательно")]
         [StringLength(50, ErrorMessage = "Название услуги не может превышать 50 символов")]

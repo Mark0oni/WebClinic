@@ -162,49 +162,66 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("WebClinic.Data.Models.Appointment", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Conclusion")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("MedicalCardId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("DoctorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("PatientId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("PatientId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Prescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ScheduleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("ScheduleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DoctorId");
+                    b.HasIndex("MedicalCardId");
 
                     b.HasIndex("PatientId");
 
-                    b.HasIndex("ScheduleId")
-                        .IsUnique();
+                    b.HasIndex("ScheduleId");
 
                     b.ToTable("Appointments");
                 });
 
+            modelBuilder.Entity("WebClinic.Data.Models.AppointmentResult", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AppointmentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Diagnosis")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RecordDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppointmentId");
+
+                    b.ToTable("AppointmentResults");
+                });
+
             modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Experience")
                         .HasColumnType("int");
@@ -229,63 +246,31 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("WebClinic.Data.Models.MedicalCard", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("PatientId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("PatientId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PatientId");
 
                     b.ToTable("MedicalCards");
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.MedicalRecord", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Diagnosis")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DoctorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("MedicalCardId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Prescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RecordDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("MedicalCardId");
-
-                    b.ToTable("MedicalRecord");
-                });
-
             modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("Height")
                         .HasColumnType("int");
-
-                    b.Property<string>("MedicalCardId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -296,9 +281,6 @@ namespace WebClinic.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MedicalCardId")
-                        .IsUnique();
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Patients");
@@ -306,18 +288,15 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("WebClinic.Data.Models.Schedule", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AppointmentId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DoctorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid?>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time");
@@ -325,28 +304,26 @@ namespace WebClinic.Migrations
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ServiceId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("ServiceId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ServiceId");
+                    b.HasIndex("DoctorId");
 
-                    b.HasIndex("DoctorId", "StartTime", "EndTime")
-                        .IsUnique()
-                        .HasDatabaseName("IX_Schedule_Doctor_Time");
+                    b.HasIndex("ServiceId");
 
                     b.ToTable("Schedules");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Service", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Cabinet")
                         .HasColumnType("int");
@@ -357,8 +334,8 @@ namespace WebClinic.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DoctorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid?>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ServiceName")
                         .IsRequired()
@@ -508,29 +485,36 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("WebClinic.Data.Models.Appointment", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.Doctor", "Doctor")
+                    b.HasOne("WebClinic.Data.Models.MedicalCard", null)
                         .WithMany("Appointments")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicalCardId");
 
                     b.HasOne("WebClinic.Data.Models.Patient", "Patient")
                         .WithMany("Appointments")
                         .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebClinic.Data.Models.Schedule", "Schedule")
-                        .WithOne("Appointment")
-                        .HasForeignKey("WebClinic.Data.Models.Appointment", "ScheduleId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithMany("Appointments")
+                        .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Doctor");
 
                     b.Navigation("Patient");
 
                     b.Navigation("Schedule");
+                });
+
+            modelBuilder.Entity("WebClinic.Data.Models.AppointmentResult", b =>
+                {
+                    b.HasOne("WebClinic.Data.Models.Appointment", "Appointment")
+                        .WithMany("AppointmentResults")
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
@@ -544,59 +528,39 @@ namespace WebClinic.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.MedicalRecord", b =>
+            modelBuilder.Entity("WebClinic.Data.Models.MedicalCard", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.Doctor", "Doctor")
-                        .WithMany()
-                        .HasForeignKey("DoctorId")
+                    b.HasOne("WebClinic.Data.Models.Patient", "Patient")
+                        .WithMany("MedicalCards")
+                        .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebClinic.Data.Models.MedicalCard", "MedicalCard")
-                        .WithMany("Records")
-                        .HasForeignKey("MedicalCardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-
-                    b.Navigation("MedicalCard");
+                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.MedicalCard", "MedicalCard")
-                        .WithOne("Patient")
-                        .HasForeignKey("WebClinic.Data.Models.Patient", "MedicalCardId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("WebClinic.Data.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("MedicalCard");
-
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Schedule", b =>
                 {
-                    b.HasOne("WebClinic.Data.Models.Doctor", "Doctor")
+                    b.HasOne("WebClinic.Data.Models.Doctor", null)
                         .WithMany("Schedules")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DoctorId");
 
                     b.HasOne("WebClinic.Data.Models.Service", "Service")
                         .WithMany("Schedules")
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Doctor");
 
                     b.Navigation("Service");
                 });
@@ -611,10 +575,13 @@ namespace WebClinic.Migrations
                     b.Navigation("Doctor");
                 });
 
+            modelBuilder.Entity("WebClinic.Data.Models.Appointment", b =>
+                {
+                    b.Navigation("AppointmentResults");
+                });
+
             modelBuilder.Entity("WebClinic.Data.Models.Doctor", b =>
                 {
-                    b.Navigation("Appointments");
-
                     b.Navigation("Schedules");
 
                     b.Navigation("Services");
@@ -622,20 +589,19 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("WebClinic.Data.Models.MedicalCard", b =>
                 {
-                    b.Navigation("Patient")
-                        .IsRequired();
-
-                    b.Navigation("Records");
+                    b.Navigation("Appointments");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
                 {
                     b.Navigation("Appointments");
+
+                    b.Navigation("MedicalCards");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Schedule", b =>
                 {
-                    b.Navigation("Appointment");
+                    b.Navigation("Appointments");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Service", b =>

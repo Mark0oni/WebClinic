@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Список услуг";
+    ViewData["HideGreeting"] = true;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -23,7 +24,7 @@
             <a href="@Url.Action("Create", "Service")" class="btn btn-primary">Добавить услугу</a>
         </div>
         
-        <table class="table table-bordered table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Наименование</th>

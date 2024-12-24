@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Расписание";
+    ViewData["HideGreeting"] = true;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -23,7 +24,7 @@
             <a href="@Url.Action("Create", "Schedule")" class="btn btn-primary">Добавить время приема</a>
         </div>
 
-        <table class="table table-bordered table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Услуга</th>

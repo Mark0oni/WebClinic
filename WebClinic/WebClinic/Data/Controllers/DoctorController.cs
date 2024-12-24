@@ -32,7 +32,7 @@ namespace WebClinic.Controllers
                 .Include(d => d.User) 
                 .Select(d => new DoctorViewModel
                 {
-                    Id = d.Id,
+                    Id = d.Id.ToString(),
                     LastName = d.User.LastName,
                     FirstName = d.User.FirstName,
                     MiddleName = d.User.MiddleName,
@@ -61,6 +61,7 @@ namespace WebClinic.Controllers
                 var user = await _context.Users
                     .FirstOrDefaultAsync(u => u.Email == model.Email);
 
+
                 if (user == null)
                 {
                     TempData["ErrorMessage"] = "Пользователь с таким email не найден!";
@@ -79,6 +80,12 @@ namespace WebClinic.Controllers
                     return View(model);
                 }
 
+                if (await _userManager.IsInRoleAsync(user, "Пациент"))
+                {
+                    TempData["ErrorMessage"] = "Пользователь с ролью 'Пациент' не может быть зарегистрирован как врач!";
+                    return View(model);
+                }
+
                 var doctor = new Doctor
                 {
                     PostName = model.PostName,
@@ -89,14 +96,16 @@ namespace WebClinic.Controllers
 
                 _context.Doctors.Add(doctor);
 
-                var removeGuestResult = await _userManager.RemoveFromRoleAsync(user, "Гость");
-                if (!removeGuestResult.Succeeded)
+                if (await _userManager.IsInRoleAsync(user, "Гость"))
                 {
-                    TempData["ErrorMessage"] = "Не удалось удалить роль 'Гость'.";
-                    return View(model);
+                    var removeGuestResult = await _userManager.RemoveFromRoleAsync(user, "Гость");
+                    if (!removeGuestResult.Succeeded)
+                    {
+                        TempData["ErrorMessage"] = "Не удалось удалить роль 'Гость'.";
+                        return View(model);
+                    }
                 }
 
-                await _userManager.RemoveFromRoleAsync(user, "Пациент");
                 await _userManager.AddToRoleAsync(user, "Доктор");
 
                 await _context.SaveChangesAsync();
@@ -108,7 +117,7 @@ namespace WebClinic.Controllers
         }
 
         [HttpGet("edit/{id}")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             var doctor = await _context.Doctors
                 .Include(d => d.User)
@@ -131,7 +140,7 @@ namespace WebClinic.Controllers
 
         [HttpPost("edit/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [FromForm] EditDoctorViewModel model)
+        public async Task<IActionResult> Edit(Guid id, [FromForm] EditDoctorViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -157,12 +166,10 @@ namespace WebClinic.Controllers
             return View(model);
         }
 
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> Delete(string id)
+        [HttpGet("delete/{id}")]
+        public async Task<IActionResult> Delete(Guid id)
         {
             var doctor = await _context.Doctors
-                .Include(d => d.Appointments)
-                .Include(d => d.User)
                 .FirstOrDefaultAsync(d => d.Id == id);
 
             if (doctor == null)
@@ -172,6 +179,8 @@ namespace WebClinic.Controllers
 
             _context.Doctors.Remove(doctor);
             await _context.SaveChangesAsync();
+
+            await _context.Users.Where(d => d.Id == doctor.UserId).ExecuteDeleteAsync();
 
             return RedirectToAction(nameof(Index));
         }
