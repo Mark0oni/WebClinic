@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebClinic.Data.Context;
 
@@ -11,9 +12,11 @@ using WebClinic.Data.Context;
 namespace WebClinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241227131852_AddNotificationModel")]
+    partial class AddNotificationModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,11 +275,9 @@ namespace WebClinic.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Notifications");
                 });
@@ -560,17 +561,6 @@ namespace WebClinic.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.Notification", b =>
-                {
-                    b.HasOne("WebClinic.Data.Models.User", "User")
-                        .WithMany("Notifications")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
                 {
                     b.HasOne("WebClinic.Data.Models.User", "User")
@@ -643,8 +633,6 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("WebClinic.Data.Models.User", b =>
                 {
-                    b.Navigation("Notifications");
-
                     b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618

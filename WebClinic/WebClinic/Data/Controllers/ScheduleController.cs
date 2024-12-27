@@ -303,20 +303,16 @@ namespace WebClinic.Controllers
         public async Task<IActionResult> CreateAppointment([FromForm] Guid scheduleId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
             var patient = await _context.Patients
                 .FirstOrDefaultAsync(p => p.UserId == userId);
 
-            if (patient == null)
-            {
-                TempData["ErrorMessage"] = "Пациент не найден.";
-                return RedirectToAction(nameof(Index));
-            }
+            var schedule = _context.Schedules.
+                FirstOrDefault(s => s.Id == scheduleId && s.IsAvailable);
 
-            var schedule = _context.Schedules.FirstOrDefault(s => s.Id == scheduleId && s.IsAvailable);
-
-            if (schedule == null)
+            if (patient == null || schedule == null)
             {
-                TempData["ErrorMessage"] = "Расписание недоступно.";
+                TempData["ErrorMessage"] = "Ошибка записи на прием.";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -331,6 +327,10 @@ namespace WebClinic.Controllers
 
             _context.Appointments.Add(appointment);
             _context.SaveChanges();
+
+            var notificationService = new NotificationService(_context);
+            await notificationService.AddNotificationAsync(userId,
+                $"Вы успешно записались на прием {schedule.Date.ToShortDateString()} в {schedule.StartTime}.");
 
             return RedirectToAction("GetAvailableDates", "Schedule");
         }

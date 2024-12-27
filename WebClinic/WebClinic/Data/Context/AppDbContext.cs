@@ -18,6 +18,7 @@ namespace WebClinic.Data.Context
         public DbSet<MedicalCard> MedicalCards { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<AppointmentResult> AppointmentResults { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -96,6 +97,17 @@ namespace WebClinic.Data.Context
                 builder.HasOne(a => a.Appointment)
                        .WithMany(p => p.AppointmentResults)
                        .HasForeignKey(a => a.AppointmentId)
+                       .OnDelete(DeleteBehavior.Cascade);
+
+            });
+
+            modelBuilder.Entity<Notification>(builder =>
+            {
+                builder.HasKey(a => a.Id);
+
+                builder.HasOne(n => n.User)
+                       .WithMany(u => u.Notifications)
+                       .HasForeignKey(a => a.UserId)
                        .OnDelete(DeleteBehavior.Cascade);
 
             });

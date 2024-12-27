@@ -14,5 +14,7 @@ namespace WebClinic.Data.Models
         public required string MiddleName { get; set; }
 
         public List<IdentityRole> Roles { get; set; } = [];
+
+        public List<Notification> Notifications { get; set; } = [];
     }
 }
