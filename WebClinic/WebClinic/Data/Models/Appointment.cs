@@ -10,8 +10,6 @@
     public class Appointment
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        
-        public required DateTime AppointmentDate { get; set; }
 
         public AppointmentStatus Status { get; set; } = AppointmentStatus.Scheduled;
 

@@ -15,8 +15,6 @@
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public required DateTime RecordDate { get; set; }
-
         public string? Diagnosis { get; set; }
 
         public string? Prescription { get; set; }

@@ -6,7 +6,7 @@ namespace WebClinic.Data.ViewModels.Schedule
 {
     public class ScheduleViewModel
     {
-        public string? Id { get; set; }
+        public Guid? Id { get; set; }
 
         [Required(ErrorMessage = "Это поле обязательно")]
         [DataType(DataType.Date)]
@@ -28,6 +28,5 @@ namespace WebClinic.Data.ViewModels.Schedule
         public bool IsAvailable { get; set; }
 
         public required string ServiceName { get; set; }
-
     }
 }

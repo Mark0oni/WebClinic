@@ -23,6 +23,10 @@
     else if (User.IsInRole("Доктор"))
     {
         <li class="nav-item">
+            <a class="nav-link" asp-controller="Appointment" asp-action="GetMyPatients">Пациенты</a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" asp-controller="Service" asp-action="Index">Мои услуги</a>
         </li>
 
@@ -34,8 +38,12 @@
     else if (User.IsInRole("Пациент"))
     {
         <li class="nav-item">
-            <a class="btn btn-primary" asp-controller="Patient" asp-action="Index">Записаться на прием</a>
+            <a class="btn btn-primary" asp-controller="Schedule" asp-action="GetAvailableDates">Записаться на прием</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Appointment" asp-action="GetMyAppointments">Мои записи</a>
+        </li>       
     }
 
     else if (User.IsInRole("Гость"))

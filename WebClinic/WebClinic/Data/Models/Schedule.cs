@@ -10,7 +10,7 @@
         
         public required TimeSpan EndTime { get; set; }
 
-        public required bool IsAvailable { get; set; } = true;
+        public required bool IsAvailable { get; set; }
 
         public required Guid ServiceId { get; set; }
 

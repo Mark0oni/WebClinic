@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebClinic.Data.ViewModels.Schedule.AvailableDatesScheduleViewModel>
+
+
+@{
+    ViewData["Title"] = "Доступные даты";
+    ViewData["HideGreeting"] = true;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (!Model.Any()) {
+
+    <h2 class="table-title">@ViewData["Title"]</h2>
+
+    <p>Нет доступных дней для записи.</p>
+}
+
+else {
+    <div class="table-container">
+
+        <h2 class="table-title">@ViewData["Title"]</h2>
+
+        <div class="table-box">
+            @foreach (var doctorSchedules in Model.GroupBy(s => s.DoctorFullName))
+            {
+                <h3 class="doctor-name">
+                    @doctorSchedules.Key
+                    <br />
+                    <span class="doctor-info">
+                        @doctorSchedules.FirstOrDefault().PostName | @doctorSchedules.FirstOrDefault().Experience лет опыта
+                    </span>
+                </h3>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Услуга</th>
+                            <th>Дата</th>
+                            <th>Начало приема</th>
+                            <th>Конец приема</th>
+                            <th>Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var schedule in doctorSchedules)
+                        {
+                            <tr>
+                                <td>@schedule.ServiceName</td>
+                                <td>@schedule.Date.ToShortDateString()</td>
+                                <td>@schedule.StartTime</td>
+                                <td>@schedule.EndTime</td>
+
+                                <td>
+                                    <form asp-action="CreateAppointment" method="post">
+                                        <input type="hidden" name="scheduleId" value="@schedule.Id" />
+                                        <button type="submit" class="btn btn-primary">Записаться</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+}
+
+

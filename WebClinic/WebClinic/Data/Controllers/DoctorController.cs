@@ -170,18 +170,39 @@ namespace WebClinic.Controllers
         public async Task<IActionResult> Delete(Guid id)
         {
             var doctor = await _context.Doctors
-                .FirstOrDefaultAsync(d => d.Id == id);
+        .FirstOrDefaultAsync(d => d.Id == id);
 
             if (doctor == null)
             {
                 return NotFound();
             }
 
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == doctor.UserId);
+
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "Пользователь, связанный с врачом, не найден.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var resultRemove = await _userManager.RemoveFromRoleAsync(user, "Доктор");
+            if (!resultRemove.Succeeded)
+            {
+                TempData["ErrorMessage"] = "Не удалось удалить роль 'Доктор'.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var resultAdd = await _userManager.AddToRoleAsync(user, "Гость");
+            if (!resultAdd.Succeeded)
+            {
+                TempData["ErrorMessage"] = "Не удалось назначить роль 'Гость'.";
+                return RedirectToAction(nameof(Index));
+            }
+
             _context.Doctors.Remove(doctor);
             await _context.SaveChangesAsync();
 
-            await _context.Users.Where(d => d.Id == doctor.UserId).ExecuteDeleteAsync();
-
+            TempData["SuccessMessage"] = "Роль 'Доктор' убрана, пользователь теперь имеет роль 'Гость'.";
             return RedirectToAction(nameof(Index));
         }
     }

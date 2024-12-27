@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebClinic.Data.Context;
 
@@ -11,9 +12,11 @@ using WebClinic.Data.Context;
 namespace WebClinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241226180242_UpdateAppointment")]
+    partial class UpdateAppointment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,6 +206,9 @@ namespace WebClinic.Migrations
 
                     b.Property<string>("Prescription")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RecordDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

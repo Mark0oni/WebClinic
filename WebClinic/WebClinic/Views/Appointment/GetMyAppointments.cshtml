@@ -1,0 +1,60 @@
+﻿@using WebClinic.Data.Models
+@model IEnumerable<WebClinic.Data.Models.Appointment>
+
+
+@{
+    ViewData["Title"] = "Мои записи";
+    ViewData["HideGreeting"] = true;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if(!Model.Any()) {
+
+    <h2 class="table-title">@ViewData["Title"]</h2>
+
+    <p>У вас нет записей на прием.</p>
+}
+
+else{
+    <div class="table-container">
+
+        <h2 class="table-title">@ViewData["Title"]</h2>
+
+        <div class="table-box">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Дата приема</th>
+                        <th>Начало</th>
+                        <th>Конец</th>
+                        <th>Врач</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var appointment in Model)
+                    {
+                        var doctor = appointment.Schedule.Service.Doctor.User;
+
+                        <tr>
+                            <td>@appointment.Schedule.Date</td>
+                            <td>@appointment.Schedule.StartTime</td>
+                            <td>@appointment.Schedule.EndTime</td>
+                            <td>@doctor.LastName @doctor.FirstName @doctor.MiddleName</td>
+                            <td>@appointment.Status.ToRussianString()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+

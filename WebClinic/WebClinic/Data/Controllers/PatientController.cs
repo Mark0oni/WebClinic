@@ -10,7 +10,7 @@ using WebClinic.Data.ViewModels.Patient;
 
 namespace WebClinic.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Пациент")]
     [Route("[controller]")]
     [ApiController]
     public class PatientController : Controller
@@ -77,16 +77,5 @@ namespace WebClinic.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-        [HttpGet("index")]
-        public async Task<IActionResult> Index()
-        {
-            var doctors = await _context.Doctors
-                .Include(u => u.User)
-                .ToListAsync();
-
-            return View(doctors);
-        }
-
     }
 }

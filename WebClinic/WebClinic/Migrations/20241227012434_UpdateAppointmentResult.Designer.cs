@@ -12,8 +12,8 @@ using WebClinic.Data.Context;
 namespace WebClinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241223210147_InitMigration")]
-    partial class InitMigration
+    [Migration("20241227012434_UpdateAppointmentResult")]
+    partial class UpdateAppointmentResult
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,9 +169,6 @@ namespace WebClinic.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("AppointmentDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<Guid?>("MedicalCardId")
                         .HasColumnType("uniqueidentifier");
 
@@ -209,9 +206,6 @@ namespace WebClinic.Migrations
 
                     b.Property<string>("Prescription")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RecordDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

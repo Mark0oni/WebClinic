@@ -1,0 +1,69 @@
+﻿@using Azure.Core
+@using WebClinic.Data.Models
+@model IEnumerable<WebClinic.Data.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Мои пациенты";
+    ViewData["HideGreeting"] = true;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="table-container">
+    <h2 class="table-title">@ViewData["Title"]</h2>
+
+    <form method="get" action="@Url.Action("GetMyPatients", "Appointment")" class="mb-3">
+        <input type="hidden" name="showCompleted" value="@(ViewData["ShowCompleted"] != null && (bool)ViewData["ShowCompleted"] ? "false" : "true")" />
+        <button type="submit" class="btn btn-secondary">
+            @(ViewData["ShowCompleted"] != null && (bool)ViewData["ShowCompleted"] ? "Скрыть завершенные/отмененные" : "Показать завершенные/отмененные")
+        </button>
+    </form>
+
+    <div class="table-box">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Дата приема</th>
+                    <th>Начало приема</th>
+                    <th>Конец приема</th>
+                    <th>Пациент</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appointment in Model)
+                {
+                    var patient = appointment.Patient.User;
+
+                    <tr>
+                        <td>@appointment.Schedule.Date</td>
+                        <td>@appointment.Schedule.StartTime</td>
+                        <td>@appointment.Schedule.EndTime</td>
+                        <td>@patient.LastName @patient.FirstName @patient.MiddleName</td>
+                        <td>@appointment.Status.ToRussianString()</td>
+                        <td>
+                            <div class="table-btn">
+                                @if (appointment.Status == AppointmentStatus.Scheduled)
+                                {
+                                    <a href="@Url.Action("AddAppointmentResult", "Appointment", new { id = appointment.Id })" class="btn btn-primary">Провести прием</a>
+                                    <a href="@Url.Action("CancelAppointment", "Appointment", new { id = appointment.Id })" class="btn btn-danger" 
+                                    onclick=" return confirm('Вы уверены, что хотите отменить запись?');">Отменить</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

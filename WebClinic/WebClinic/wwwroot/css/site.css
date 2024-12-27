@@ -135,7 +135,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90vw;
+    width: 75vw;
 
 }
 
@@ -193,69 +193,18 @@ main {
     box-shadow: 0 0 15px #598ee9;
 }
 
-.doctor-container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90vw;
-}
-
-.doctor-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-.doctor-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.doctor-card {
-    background-color: #fefefe;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.doctor-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.doctor-card h3 {
-    font-size: 1.2rem;
+.doctor-name {
+    font-size: 20px;
+    color: #2C3E50;
     margin-bottom: 10px;
-    color: #333;
 }
 
-.doctor-card p {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 5px 0;
+.doctor-info {
+    font-size: 14px;
+    color: gray;
+    margin-top: 5px;
 }
 
-.doctor-card .btn {
-    margin-top: 15px;
-    width: 100%;
-    padding: 10px;
-    color: white;
-    border: none;
-    transition: background-color 0.3s;
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-.doctor-card .btn:hover {
-    color: white;
-    transform: scale(1.02);
-    box-shadow: 0 0 15px #598ee9;
-}
 
 .info-container {
     margin: 0 auto;
@@ -263,11 +212,9 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 70vw;
-    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 30px;
-    color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 footer {

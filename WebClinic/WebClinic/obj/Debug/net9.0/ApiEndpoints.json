@@ -258,6 +258,95 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebClinic.Controllers.AppointmentController",
+    "Method": "AddAppointmentResult",
+    "RelativePath": "Appointment/addAppointmentResult/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AppointmentController",
+    "Method": "AddAppointmentResult",
+    "RelativePath": "Appointment/addAppointmentResult/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Diagnosis",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Prescription",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AppointmentId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AppointmentController",
+    "Method": "CancelAppointment",
+    "RelativePath": "Appointment/cancelAppointment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AppointmentController",
+    "Method": "GetMyPatients",
+    "RelativePath": "Appointment/doctor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "showCompleted",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AppointmentController",
+    "Method": "GetMyAppointments",
+    "RelativePath": "Appointment/patient",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebClinic.Controllers.PatientController",
     "Method": "Create",
     "RelativePath": "Patient/create",
@@ -291,16 +380,6 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.PatientController",
-    "Method": "Index",
-    "RelativePath": "Patient/index",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -353,6 +432,22 @@
       },
       {
         "Name": "ServiceId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.ScheduleController",
+    "Method": "CreateAppointment",
+    "RelativePath": "Schedule/createAppointment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleId",
         "Type": "System.Guid",
         "IsRequired": false
       }
@@ -435,6 +530,16 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.ScheduleController",
+    "Method": "GetAvailableDates",
+    "RelativePath": "Schedule/getAvailableDates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

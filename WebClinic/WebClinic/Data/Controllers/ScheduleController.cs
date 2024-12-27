@@ -1,18 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebClinic.Data;
+using System.Security.Claims;
+using WebClinic.Data.Context;
 using WebClinic.Data.Models;
 using WebClinic.Data.ViewModels.Schedule;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using WebClinic.Data.Context;
-using System.Security.Claims;
-using System.Numerics;
 
 namespace WebClinic.Controllers
 {
-    [Authorize(Roles = "Доктор")]
     [Route("[controller]")]
     [ApiController]
     public class ScheduleController : Controller
@@ -24,15 +20,27 @@ namespace WebClinic.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Доктор")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var currentDoctor = await _context.Doctors
+                .FirstOrDefaultAsync(d => d.UserId == userId);
+
+            if (currentDoctor == null)
+            {
+                TempData["ErrorMessage"] = "Доктор не найден!";
+                return NotFound();
+            }
+
             var schedules = await _context.Schedules
                 .Include(s => s.Service)
                 .ThenInclude(s => s.Doctor)
                 .Select(s => new ScheduleViewModel
                 {
-                    Id = s.Id.ToString(),
+                    Id = s.Id,
                     Date = s.Date,
                     StartTime = s.StartTime,
                     EndTime = s.EndTime,
@@ -47,6 +55,7 @@ namespace WebClinic.Controllers
             return View(schedules);
         }
 
+        [Authorize(Roles = "Доктор")]
         [HttpGet("create")]
         public async Task<IActionResult> Create()
         {
@@ -73,6 +82,7 @@ namespace WebClinic.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Доктор")]
         [HttpPost("create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromForm] CreateScheduleViewModel model)
@@ -147,6 +157,7 @@ namespace WebClinic.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Доктор")]
         [HttpGet("edit/{id}")]
         public async Task<IActionResult> Edit(Guid id)
         {
@@ -178,6 +189,7 @@ namespace WebClinic.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Доктор")]
         [HttpPost("edit/{id}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [FromForm] EditScheduleViewModel model)
@@ -226,7 +238,7 @@ namespace WebClinic.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "Доктор")]
         [HttpGet("delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -249,6 +261,76 @@ namespace WebClinic.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = "Пациент")]
+        [HttpGet("getAvailableDates")]
+        public async Task<IActionResult> GetAvailableDates()
+        {
+            var schedules = await _context.Schedules
+               .Include(s => s.Service)
+               .ThenInclude(s => s.Doctor)
+               .Where(s => s.IsAvailable)
+               .Select(s => new AvailableDatesScheduleViewModel
+               {
+                   Id = s.Id,
+                   Date = s.Date,
+                   StartTime = s.StartTime,
+                   EndTime = s.EndTime,
+                   ServiceName = s.Service != null
+                       ? s.Service.ServiceName
+                       : "Не назначена",
+                   DoctorFullName = s.Service != null && s.Service.Doctor != null
+                       ? $"{s.Service.Doctor.User.LastName} {s.Service.Doctor.User.FirstName} {s.Service.Doctor.User.MiddleName}"
+                       : "Неизвестный врач",
+                   PostName = s.Service != null && s.Service.Doctor != null
+                        ? $"{s.Service.Doctor.PostName}"
+                        : "Неизвестная должность",
+                   Experience = s.Service != null && s.Service.Doctor != null
+                        ? $"{s.Service.Doctor.Experience}"
+                        : "Неизвестный опыт"
+               })
+               .ToListAsync();
+
+
+            return View(schedules);
+        }
+
+        [Authorize(Roles = "Пациент")]
+        [HttpPost("createAppointment")]
+        public async Task<IActionResult> CreateAppointment([FromForm] Guid scheduleId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var patient = await _context.Patients
+                .FirstOrDefaultAsync(p => p.UserId == userId);
+
+            if (patient == null)
+            {
+                TempData["ErrorMessage"] = "Пациент не найден.";
+                return RedirectToAction("GetAvailableDates", "Schedule");
+            }
+
+            var schedule = _context.Schedules.FirstOrDefault(s => s.Id == scheduleId && s.IsAvailable);
+
+            if (schedule == null)
+            {
+                TempData["ErrorMessage"] = "Расписание недоступно.";
+                return RedirectToAction("GetAvailableDates", "Schedule");
+            }
+
+            var appointment = new Appointment
+            {
+                PatientId = patient.Id,
+                ScheduleId = schedule.Id,
+                Status = AppointmentStatus.Scheduled
+            };
+
+            schedule.IsAvailable = false;
+
+            _context.Appointments.Add(appointment);
+            _context.SaveChanges();
+
+            return RedirectToAction("GetAvailableDates", "Schedule");
         }
     }
 }

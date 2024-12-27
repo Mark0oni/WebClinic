@@ -40,10 +40,10 @@
                 {
                     <tr>
                         <td>@schedule.ServiceName</td>
-                        <td>@schedule.Date.ToString("dd-MM-yyyy")</td>
+                        <td>@schedule.Date.ToShortDateString()</td>
                         <td>@schedule.StartTime</td>
                         <td>@schedule.EndTime</td>
-                        <td>@schedule.IsAvailable</td>
+                        <td>@(schedule.IsAvailable ? "Доступно" : "Не доступно")</td>
                         <td>
                             <div class="table-btn">
                                 <a href="@Url.Action("Edit", "Schedule", new { id = schedule.Id })" class="btn btn-primary btn-secondary">Редактировать</a>

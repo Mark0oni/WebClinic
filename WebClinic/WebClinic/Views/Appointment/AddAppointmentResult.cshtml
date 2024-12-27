@@ -1,0 +1,55 @@
+﻿@model WebClinic.Data.ViewModels.Appointment.AppointmentResultViewModel
+
+@{
+    ViewData["Title"] = "Добавить результат приема";
+    ViewData["HideGreeting"] = true;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="form-container">
+    <h2 class="form-title">Добавление результата приема</h2>
+
+    <div class="form-box">
+        <form asp-action="AddAppointmentResult" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Diagnosis" class="form-label">Диагноз</label>
+                <input asp-for="Diagnosis" class="form-control" />
+                <span asp-validation-for="Diagnosis" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Prescription" class="form-label">Рецепт</label>
+                <input asp-for="Prescription" class="form-control" />
+                <span asp-validation-for="Prescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-btn">
+                <input type="hidden" name="AppointmentId" value="@Model.AppointmentId" />
+                <button type="submit" class="btn btn-primary">Сохранить результат</button>
+                <a href="@Url.Action("GetMyPatients", "Appointment")" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}
