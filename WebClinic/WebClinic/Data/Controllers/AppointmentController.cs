@@ -135,6 +135,7 @@ namespace WebClinic.Controllers
                 
             }
 
+            TempData["Message"] = "Заключение было добавлено в мед. карту пациента.";
             return View(model);
         }
 
@@ -169,6 +170,7 @@ namespace WebClinic.Controllers
             _context.Appointments.Update(appointment);
             await _context.SaveChangesAsync();
 
+            TempData["Message"] = "Запись на прием была успешно отменена.";
             return RedirectToAction("GetMyPatients");
         }
 

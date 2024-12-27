@@ -87,8 +87,9 @@ namespace WebClinic.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-            
-            return View(model);
+
+            TempData["Message"] = "Пользователь успешно добавлен в систему.";
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet("edit/{id}")]
@@ -168,6 +169,7 @@ namespace WebClinic.Controllers
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
+            TempData["Message"] = "Пользователь успешно удален из системы.";
             return RedirectToAction(nameof(Index));
         }
     }

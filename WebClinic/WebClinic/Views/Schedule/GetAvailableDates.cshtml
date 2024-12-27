@@ -14,6 +14,13 @@
     </div>
 }
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
 @if (!Model.Any()) {
 
     <h2 class="table-title">@ViewData["Title"]</h2>

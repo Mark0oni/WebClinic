@@ -97,6 +97,7 @@ namespace WebClinic.Controllers
                 _context.Services.Add(service);
                 await _context.SaveChangesAsync();
 
+                TempData["Message"] = "Услуга успешно добавлена.";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -206,6 +207,7 @@ namespace WebClinic.Controllers
             _context.Services.Remove(service);
             await _context.SaveChangesAsync();
 
+            TempData["Message"] = "Услуга успешно удалена.";
             return RedirectToAction(nameof(Index));
         }
     }

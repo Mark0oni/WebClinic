@@ -10,7 +10,7 @@ using WebClinic.Data.ViewModels.Patient;
 
 namespace WebClinic.Controllers
 {
-    [Authorize(Roles="Пациент")]
+    [Authorize(Roles="Гость")]
     [Route("[controller]")]
     [ApiController]
     public class PatientController : Controller
@@ -75,6 +75,7 @@ namespace WebClinic.Controllers
 
             await _signInManager.RefreshSignInAsync(user);
 
+            TempData["Message"] = "Вы успешно оформили профиль пациента";
             return RedirectToAction("Index", "Home");
         }
     }

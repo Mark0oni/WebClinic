@@ -84,11 +84,10 @@ namespace WebClinic.Controllers
 
                 _context.Services.Add(service);
                 await _context.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Index));
             }
 
-            return View(model);
+            TempData["Message"] = "Услуга была успешно добавлена.";
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet("edit/{id:guid}")]
@@ -177,7 +176,8 @@ namespace WebClinic.Controllers
             }
 
             var service = await _context.Services
-                .Include(s => s.Schedules) 
+                .Include(s => s.Schedules)
+                    .ThenInclude(schedule => schedule.Appointments)
                 .FirstOrDefaultAsync(s => s.Id == id && s.DoctorId == currentDoctor.Id);
 
             if (service == null)
@@ -186,16 +186,20 @@ namespace WebClinic.Controllers
                 return Forbid();
             }
 
-            if (service.Schedules != null && service.Schedules.Any())
+            var hasNonCancelledAppointments = service.Schedules
+                .SelectMany(schedule => schedule.Appointments)
+                .Any(appointment => appointment.Status != AppointmentStatus.Cancelled);
+
+            if (hasNonCancelledAppointments)
             {
-                TempData["ErrorMessage"] = "Невозможно удалить услугу, так как на нее уже записаны пациенты.";
+                TempData["ErrorMessage"] = "Невозможно удалить услугу, так как на нее есть записи, которые не отменены.";
                 return RedirectToAction(nameof(Index));
             }
 
             _context.Services.Remove(service);
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Услуга успешно удалена.";
+            TempData["Message"] = "Услуга успешно удалена.";
             return RedirectToAction(nameof(Index));
         }
 

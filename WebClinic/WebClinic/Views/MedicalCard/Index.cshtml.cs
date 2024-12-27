@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebClinic.Views.Shared
+namespace WebClinic.Views.MedicalCard
 {
-    public class _NotificationListModel : PageModel
+    public class GetMyAppointmentsResultModel : PageModel
     {
         public void OnGet()
         {

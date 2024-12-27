@@ -12,8 +12,8 @@ using WebClinic.Data.Context;
 namespace WebClinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241227131852_AddNotificationModel")]
-    partial class AddNotificationModel
+    [Migration("20241227165241_InitMigration")]
+    partial class InitMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -255,31 +255,6 @@ namespace WebClinic.Migrations
                     b.HasIndex("PatientId");
 
                     b.ToTable("MedicalCards");
-                });
-
-            modelBuilder.Entity("WebClinic.Data.Models.Notification", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsRead")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>

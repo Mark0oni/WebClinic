@@ -254,33 +254,6 @@ namespace WebClinic.Migrations
                     b.ToTable("MedicalCards");
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.Notification", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsRead")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Notifications");
-                });
-
             modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
                 {
                     b.Property<Guid>("Id")
@@ -560,17 +533,6 @@ namespace WebClinic.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("WebClinic.Data.Models.Notification", b =>
-                {
-                    b.HasOne("WebClinic.Data.Models.User", "User")
-                        .WithMany("Notifications")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("WebClinic.Data.Models.Patient", b =>
                 {
                     b.HasOne("WebClinic.Data.Models.User", "User")
@@ -643,8 +605,6 @@ namespace WebClinic.Migrations
 
             modelBuilder.Entity("WebClinic.Data.Models.User", b =>
                 {
-                    b.Navigation("Notifications");
-
                     b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618

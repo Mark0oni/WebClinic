@@ -595,6 +595,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebClinic.Controllers.MedicalCardController",
+    "Method": "Index",
+    "RelativePath": "MedicalCard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebClinic.Controllers.PatientController",
     "Method": "Create",
     "RelativePath": "Patient/create",

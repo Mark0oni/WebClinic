@@ -993,6 +993,18 @@
         }
       }
     },
+    "/MedicalCard": {
+      "get": {
+        "tags": [
+          "MedicalCard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Patient/create": {
       "get": {
         "tags": [

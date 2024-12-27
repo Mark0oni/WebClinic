@@ -43,7 +43,11 @@
 
         <li class="nav-item">
             <a class="nav-link" asp-controller="Appointment" asp-action="GetMyAppointments">Мои записи</a>
-        </li>       
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="MedicalCard" asp-action="Index">Мед. карта</a>
+        </li>
     }
 
     else if (User.IsInRole("Гость"))

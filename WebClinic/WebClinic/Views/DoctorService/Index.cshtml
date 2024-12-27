@@ -13,6 +13,13 @@
     </div>
 }
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
 <div class="table-container">
 
     <h2 class="table-title">@ViewData["Title"]</h2>

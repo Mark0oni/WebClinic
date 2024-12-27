@@ -110,6 +110,7 @@ namespace WebClinic.Controllers
 
                 await _context.SaveChangesAsync();
 
+                TempData["Message"] = "Доктор успешно добавлен в поликлинику.";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -202,7 +203,7 @@ namespace WebClinic.Controllers
             _context.Doctors.Remove(doctor);
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Роль 'Доктор' убрана, пользователь теперь имеет роль 'Гость'.";
+            TempData["Message"] = "Роль 'Доктор' убрана, пользователь теперь имеет роль 'Гость'.";
             return RedirectToAction(nameof(Index));
         }
     }

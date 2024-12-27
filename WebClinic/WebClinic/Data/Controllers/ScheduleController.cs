@@ -150,6 +150,7 @@ namespace WebClinic.Controllers
                     _context.Schedules.Add(schedule);
                     await _context.SaveChangesAsync();
 
+                    TempData["Message"] = "Вы успешно добавили время приема в свое расписание.";
                     return RedirectToAction(nameof(Index));
                 }
             } 
@@ -253,13 +254,14 @@ namespace WebClinic.Controllers
 
             if (schedule.Appointments.Any()) 
             {
-                TempData["ErrorMessage"] = "Невозможно удалить время приема, потому что уже есть запись.";
+                TempData["ErrorMessage"] = "Невозможно удалить время приема, потому что на эту дату есть не отмененные записи.";
                 return RedirectToAction(nameof(Index));
             }
 
             _context.Schedules.Remove(schedule);
             await _context.SaveChangesAsync();
 
+            TempData["Message"] = "Вы успешно удалили время приема из своего расписание.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -303,12 +305,14 @@ namespace WebClinic.Controllers
         public async Task<IActionResult> CreateAppointment([FromForm] Guid scheduleId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
+
+            // Находим пациента по userId
             var patient = await _context.Patients
                 .FirstOrDefaultAsync(p => p.UserId == userId);
 
-            var schedule = _context.Schedules.
-                FirstOrDefault(s => s.Id == scheduleId && s.IsAvailable);
+            // Находим расписание по scheduleId, проверяя, доступна ли запись
+            var schedule = await _context.Schedules
+                .FirstOrDefaultAsync(s => s.Id == scheduleId && s.IsAvailable);
 
             if (patient == null || schedule == null)
             {
@@ -316,6 +320,7 @@ namespace WebClinic.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            // Создаем новую запись на прием
             var appointment = new Appointment
             {
                 PatientId = patient.Id,
@@ -323,16 +328,40 @@ namespace WebClinic.Controllers
                 Status = AppointmentStatus.Scheduled
             };
 
+            // Обновляем статус расписания, делая его недоступным
             schedule.IsAvailable = false;
 
+            // Добавляем запись на прием в контекст и сохраняем изменения
             _context.Appointments.Add(appointment);
-            _context.SaveChanges();
 
-            var notificationService = new NotificationService(_context);
-            await notificationService.AddNotificationAsync(userId,
-                $"Вы успешно записались на прием {schedule.Date.ToShortDateString()} в {schedule.StartTime}.");
+            // Создаем или обновляем медицинскую карту пациента
+            var medicalCard = await _context.MedicalCards
+                .FirstOrDefaultAsync(mc => mc.PatientId == patient.Id);
 
+            // Если медицинская карта не существует, создаем ее
+            if (medicalCard == null)
+            {
+                medicalCard = new MedicalCard
+                {
+                    PatientId = patient.Id,
+                    Appointments = new List<Appointment> { appointment }  // Добавляем прием в медицинскую карту
+                };
+
+                _context.MedicalCards.Add(medicalCard);
+            }
+            else
+            {
+                // Если карта уже существует, добавляем новый прием в список
+                medicalCard.Appointments.Add(appointment);
+            }
+
+            // Сохраняем все изменения в базе данных
+            await _context.SaveChangesAsync();
+
+            // Уведомление об успешной записи
+            TempData["Message"] = $"Вы успешно записались на прием {schedule.Date.ToShortDateString()} в {schedule.StartTime}";
             return RedirectToAction("GetAvailableDates", "Schedule");
         }
+
     }
 }

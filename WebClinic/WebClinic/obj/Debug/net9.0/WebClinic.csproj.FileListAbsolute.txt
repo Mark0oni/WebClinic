@@ -1,3 +1,13 @@
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.csproj.AssemblyReference.cache
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.AssemblyInfoInputs.cache
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.AssemblyInfo.cs
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.csproj.CoreCompileInputs.cache
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.MvcApplicationPartsAssemblyInfo.cs
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.MvcApplicationPartsAssemblyInfo.cache
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.RazorAssemblyInfo.cache
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.RazorAssemblyInfo.cs
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.sourcelink.json
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\appsettings.Development.json
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\appsettings.json
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\WebClinic.staticwebassets.runtime.json
@@ -384,6 +394,7 @@ C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Composition.Typ
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Memory.Data.dll
+C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Net.WebSockets.WebSocketProtocol.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Reflection.MetadataLoadContext.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Runtime.Caching.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
@@ -546,16 +557,6 @@ C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\runtimes\win-arm64\nat
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.csproj.AssemblyReference.cache
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.GeneratedMSBuildEditorConfig.editorconfig
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.AssemblyInfoInputs.cache
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.AssemblyInfo.cs
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.csproj.CoreCompileInputs.cache
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.MvcApplicationPartsAssemblyInfo.cs
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.MvcApplicationPartsAssemblyInfo.cache
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.RazorAssemblyInfo.cache
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.RazorAssemblyInfo.cs
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.sourcelink.json
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\scopedcss\bundle\WebClinic.styles.css
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\scopedcss\projectbundle\WebClinic.bundle.scp.css
@@ -621,6 +622,7 @@ C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\a3ygkwa5zy-
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
+C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\o4p3l1l4q6-sfc2z09z5r.gz
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\o6bvie326r-61n19gt1b8.gz
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\vtebtds0wh-iezdi3hnt9.gz
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\ierljvta73-fr7q2aak1r.gz
@@ -698,5 +700,3 @@ C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\refint\WebClinic.dll
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.pdb
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.genruntimeconfig.cache
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\ref\WebClinic.dll
-C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\compressed\o4p3l1l4q6-sfc2z09z5r.gz
-C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Net.WebSockets.WebSocketProtocol.dll

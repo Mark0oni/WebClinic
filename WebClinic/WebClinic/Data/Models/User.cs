@@ -15,6 +15,5 @@ namespace WebClinic.Data.Models
 
         public List<IdentityRole> Roles { get; set; } = [];
 
-        public List<Notification> Notifications { get; set; } = [];
     }
 }
