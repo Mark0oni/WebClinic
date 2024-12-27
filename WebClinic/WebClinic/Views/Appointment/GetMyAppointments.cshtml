@@ -33,8 +33,9 @@ else{
                 <thead>
                     <tr>
                         <th>Дата приема</th>
-                        <th>Начало</th>
-                        <th>Конец</th>
+                        <th>Начало приема</th>
+                        <th>Конец приема</th>
+                        <th>Кабинет</th>
                         <th>Врач</th>
                         <th>Статус</th>
                     </tr>
@@ -48,6 +49,7 @@ else{
                             <td>@appointment.Schedule.Date.ToShortDateString()</td>
                             <td>@appointment.Schedule.StartTime</td>
                             <td>@appointment.Schedule.EndTime</td>
+                            <td>@appointment.Schedule.Service.Cabinet</td>
                             <td>@doctor.LastName @doctor.FirstName @doctor.MiddleName</td>
                             <td><b>@appointment.Status.ToRussianString()</b></td>
                         </tr>

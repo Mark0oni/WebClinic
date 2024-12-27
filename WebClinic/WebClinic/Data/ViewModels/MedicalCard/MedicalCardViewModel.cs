@@ -13,6 +13,8 @@
         
         public string? DoctorFullName { get; set; }
 
+        public string? PatientFullName { get; set; }
+
         public string? ServiceName { get; set; }
 
     }

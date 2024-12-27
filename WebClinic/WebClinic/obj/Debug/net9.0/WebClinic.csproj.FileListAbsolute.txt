@@ -394,7 +394,6 @@ C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Composition.Typ
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Memory.Data.dll
-C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Net.WebSockets.WebSocketProtocol.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Reflection.MetadataLoadContext.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Runtime.Caching.dll
 C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
@@ -700,3 +699,10 @@ C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\refint\WebClinic.dll
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.pdb
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\WebClinic.genruntimeconfig.cache
 C:\Project\WebClinic\WebClinic\WebClinic\obj\Debug\net9.0\ref\WebClinic.dll
+C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\EPPlus.dll
+C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\EPPlus.Interfaces.dll
+C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\EPPlus.System.Drawing.dll
+C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\System.Drawing.Common.dll
+C:\Project\WebClinic\WebClinic\WebClinic\bin\Debug\net9.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll

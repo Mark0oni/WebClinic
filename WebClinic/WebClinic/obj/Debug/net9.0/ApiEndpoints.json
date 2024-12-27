@@ -129,6 +129,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebClinic.Controllers.AdminReportController",
+    "Method": "GenerateReport",
+    "RelativePath": "AdminReport/generateReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebClinic.Controllers.AdminServiceController",
     "Method": "Index",
     "RelativePath": "AdminService",
@@ -596,7 +606,7 @@
   },
   {
     "ContainingType": "WebClinic.Controllers.MedicalCardController",
-    "Method": "Index",
+    "Method": "GetMyMedicalCard",
     "RelativePath": "MedicalCard",
     "HttpMethod": "GET",
     "IsController": true,

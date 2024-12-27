@@ -10,7 +10,6 @@ using WebClinic.Data.ViewModels.MedicalCard;
 
 namespace WebClinic.Controllers
 {
-    [Authorize (Roles = "Пациент")]
     [ApiController]
     [Route("[controller]")]
     public class MedicalCardController : Controller
@@ -22,8 +21,9 @@ namespace WebClinic.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Пациент")]
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> GetMyMedicalCard()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 

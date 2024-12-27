@@ -221,6 +221,18 @@
         }
       }
     },
+    "/AdminReport/generateReport": {
+      "get": {
+        "tags": [
+          "AdminReport"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/AdminService": {
       "get": {
         "tags": [
