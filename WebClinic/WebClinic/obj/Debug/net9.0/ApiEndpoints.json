@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "WebClinic.Controllers.DoctorController",
+    "ContainingType": "WebClinic.Controllers.AdminDoctorController",
     "Method": "Index",
-    "RelativePath": "admin/Doctor",
+    "RelativePath": "AdminDoctor",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -10,9 +10,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.DoctorController",
+    "ContainingType": "WebClinic.Controllers.AdminDoctorController",
     "Method": "Create",
-    "RelativePath": "admin/Doctor/create",
+    "RelativePath": "AdminDoctor/create",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -20,9 +20,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.DoctorController",
+    "ContainingType": "WebClinic.Controllers.AdminDoctorController",
     "Method": "Create",
-    "RelativePath": "admin/Doctor/create",
+    "RelativePath": "AdminDoctor/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -66,9 +66,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.DoctorController",
+    "ContainingType": "WebClinic.Controllers.AdminDoctorController",
     "Method": "Delete",
-    "RelativePath": "admin/Doctor/delete/{id}",
+    "RelativePath": "AdminDoctor/delete/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -82,9 +82,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.DoctorController",
+    "ContainingType": "WebClinic.Controllers.AdminDoctorController",
     "Method": "Edit",
-    "RelativePath": "admin/Doctor/edit/{id}",
+    "RelativePath": "AdminDoctor/edit/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -98,9 +98,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.DoctorController",
+    "ContainingType": "WebClinic.Controllers.AdminDoctorController",
     "Method": "Edit",
-    "RelativePath": "admin/Doctor/edit/{id}",
+    "RelativePath": "AdminDoctor/edit/{id}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -129,9 +129,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.UserController",
+    "ContainingType": "WebClinic.Controllers.AdminServiceController",
     "Method": "Index",
-    "RelativePath": "admin/User",
+    "RelativePath": "AdminService",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -139,9 +139,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.UserController",
+    "ContainingType": "WebClinic.Controllers.AdminServiceController",
     "Method": "Create",
-    "RelativePath": "admin/User/create",
+    "RelativePath": "AdminService/create",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -149,9 +149,138 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.UserController",
+    "ContainingType": "WebClinic.Controllers.AdminServiceController",
     "Method": "Create",
-    "RelativePath": "admin/User/create",
+    "RelativePath": "AdminService/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ServiceName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cabinet",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cost",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "DoctorId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AdminServiceController",
+    "Method": "Delete",
+    "RelativePath": "AdminService/delete/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AdminServiceController",
+    "Method": "Edit",
+    "RelativePath": "AdminService/edit/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AdminServiceController",
+    "Method": "Edit",
+    "RelativePath": "AdminService/edit/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "ServiceName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cabinet",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cost",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "DoctorId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AdminUserController",
+    "Method": "Index",
+    "RelativePath": "AdminUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AdminUserController",
+    "Method": "Create",
+    "RelativePath": "AdminUser/create",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.AdminUserController",
+    "Method": "Create",
+    "RelativePath": "AdminUser/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -185,9 +314,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.UserController",
+    "ContainingType": "WebClinic.Controllers.AdminUserController",
     "Method": "Delete",
-    "RelativePath": "admin/User/delete/{id}",
+    "RelativePath": "AdminUser/delete/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -201,9 +330,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.UserController",
+    "ContainingType": "WebClinic.Controllers.AdminUserController",
     "Method": "Edit",
-    "RelativePath": "admin/User/edit/{id}",
+    "RelativePath": "AdminUser/edit/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -217,9 +346,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebClinic.Controllers.UserController",
+    "ContainingType": "WebClinic.Controllers.AdminUserController",
     "Method": "Edit",
-    "RelativePath": "admin/User/edit/{id}",
+    "RelativePath": "AdminUser/edit/{id}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -344,6 +473,125 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.DoctorServiceController",
+    "Method": "Index",
+    "RelativePath": "DoctorService",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.DoctorServiceController",
+    "Method": "Create",
+    "RelativePath": "DoctorService/create",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.DoctorServiceController",
+    "Method": "Create",
+    "RelativePath": "DoctorService/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ServiceName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cabinet",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cost",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.DoctorServiceController",
+    "Method": "Delete",
+    "RelativePath": "DoctorService/delete/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.DoctorServiceController",
+    "Method": "Edit",
+    "RelativePath": "DoctorService/edit/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebClinic.Controllers.DoctorServiceController",
+    "Method": "Edit",
+    "RelativePath": "DoctorService/edit/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "ServiceName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cabinet",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cost",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -540,135 +788,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.ServiceController",
-    "Method": "Index",
-    "RelativePath": "Service",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.ServiceController",
-    "Method": "Create",
-    "RelativePath": "Service/create",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.ServiceController",
-    "Method": "Create",
-    "RelativePath": "Service/create",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ServiceName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Cabinet",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Cost",
-        "Type": "System.Decimal",
-        "IsRequired": false
-      },
-      {
-        "Name": "DoctorId",
-        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.ServiceController",
-    "Method": "Delete",
-    "RelativePath": "Service/delete/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.ServiceController",
-    "Method": "Edit",
-    "RelativePath": "Service/edit/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebClinic.Controllers.ServiceController",
-    "Method": "Edit",
-    "RelativePath": "Service/edit/{id}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "ServiceName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Cabinet",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Cost",
-        "Type": "System.Decimal",
-        "IsRequired": false
-      },
-      {
-        "Name": "DoctorId",
-        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
     "ReturnTypes": []
   }
 ]

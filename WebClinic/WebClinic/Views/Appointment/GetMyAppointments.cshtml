@@ -45,11 +45,11 @@ else{
                         var doctor = appointment.Schedule.Service.Doctor.User;
 
                         <tr>
-                            <td>@appointment.Schedule.Date</td>
+                            <td>@appointment.Schedule.Date.ToShortDateString()</td>
                             <td>@appointment.Schedule.StartTime</td>
                             <td>@appointment.Schedule.EndTime</td>
                             <td>@doctor.LastName @doctor.FirstName @doctor.MiddleName</td>
-                            <td>@appointment.Status.ToRussianString()</td>
+                            <td><b>@appointment.Status.ToRussianString()</b></td>
                         </tr>
                     }
                 </tbody>

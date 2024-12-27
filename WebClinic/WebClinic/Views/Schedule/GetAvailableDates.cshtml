@@ -41,6 +41,8 @@ else {
                     <thead>
                         <tr>
                             <th>Услуга</th>
+                            <th>Описание</th>
+                            <th>Кабинет</th>
                             <th>Дата</th>
                             <th>Начало приема</th>
                             <th>Конец приема</th>
@@ -52,6 +54,8 @@ else {
                         {
                             <tr>
                                 <td>@schedule.ServiceName</td>
+                                <th>@schedule.Description</th>
+                                <td>@schedule.Cabinet</td>
                                 <td>@schedule.Date.ToShortDateString()</td>
                                 <td>@schedule.StartTime</td>
                                 <td>@schedule.EndTime</td>

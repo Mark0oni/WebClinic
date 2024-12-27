@@ -48,7 +48,7 @@ namespace WebClinic.Controllers
             if (currentPatient != null)
             {
                 TempData["ErrorMessage"] = "Пациент уже зарегестрирован!";
-                return BadRequest();
+                return RedirectToAction(nameof(Index));
             }
 
             var patient = new Patient
@@ -68,7 +68,7 @@ namespace WebClinic.Controllers
             if (!removeGuestResult.Succeeded)
             {
                 TempData["ErrorMessage"] = "Не удалось удалить роль 'Гость'.";
-                return BadRequest();
+                return RedirectToAction(nameof(Index));
             }
 
             await _userManager.AddToRoleAsync(user, "Пациент");

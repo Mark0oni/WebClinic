@@ -5,6 +5,654 @@
     "version": "1.0"
   },
   "paths": {
+    "/AdminDoctor": {
+      "get": {
+        "tags": [
+          "AdminDoctor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminDoctor/create": {
+      "get": {
+        "tags": [
+          "AdminDoctor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AdminDoctor"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Email",
+                  "Experience",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "PostName",
+                  "Salary"
+                ],
+                "type": "object",
+                "properties": {
+                  "LastName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "FirstName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "MiddleName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "PostName": {
+                    "type": "string"
+                  },
+                  "Experience": {
+                    "maximum": 50,
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Salary": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "encoding": {
+                "LastName": {
+                  "style": "form"
+                },
+                "FirstName": {
+                  "style": "form"
+                },
+                "MiddleName": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "PostName": {
+                  "style": "form"
+                },
+                "Experience": {
+                  "style": "form"
+                },
+                "Salary": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminDoctor/edit/{id}": {
+      "get": {
+        "tags": [
+          "AdminDoctor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AdminDoctor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Experience",
+                  "PostName",
+                  "Salary"
+                ],
+                "type": "object",
+                "properties": {
+                  "PostName": {
+                    "type": "string"
+                  },
+                  "Experience": {
+                    "maximum": 50,
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Salary": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "encoding": {
+                "PostName": {
+                  "style": "form"
+                },
+                "Experience": {
+                  "style": "form"
+                },
+                "Salary": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminDoctor/delete/{id}": {
+      "get": {
+        "tags": [
+          "AdminDoctor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminService": {
+      "get": {
+        "tags": [
+          "AdminService"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminService/create": {
+      "get": {
+        "tags": [
+          "AdminService"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AdminService"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Cabinet",
+                  "Cost",
+                  "ServiceName"
+                ],
+                "type": "object",
+                "properties": {
+                  "ServiceName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Description": {
+                    "maxLength": 250,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Cabinet": {
+                    "maximum": 101,
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Cost": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "DoctorId": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              },
+              "encoding": {
+                "ServiceName": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Cabinet": {
+                  "style": "form"
+                },
+                "Cost": {
+                  "style": "form"
+                },
+                "DoctorId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminService/edit/{id}": {
+      "get": {
+        "tags": [
+          "AdminService"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AdminService"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Cabinet",
+                  "Cost",
+                  "ServiceName"
+                ],
+                "type": "object",
+                "properties": {
+                  "ServiceName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Description": {
+                    "maxLength": 250,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Cabinet": {
+                    "maximum": 101,
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Cost": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "DoctorId": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              },
+              "encoding": {
+                "ServiceName": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Cabinet": {
+                  "style": "form"
+                },
+                "Cost": {
+                  "style": "form"
+                },
+                "DoctorId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminService/delete/{id}": {
+      "get": {
+        "tags": [
+          "AdminService"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminUser": {
+      "get": {
+        "tags": [
+          "AdminUser"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminUser/create": {
+      "get": {
+        "tags": [
+          "AdminUser"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AdminUser"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Email",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Password"
+                ],
+                "type": "object",
+                "properties": {
+                  "LastName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "FirstName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "MiddleName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "Password": {
+                    "maxLength": 20,
+                    "minLength": 6,
+                    "type": "string",
+                    "format": "password"
+                  }
+                }
+              },
+              "encoding": {
+                "LastName": {
+                  "style": "form"
+                },
+                "FirstName": {
+                  "style": "form"
+                },
+                "MiddleName": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Password": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminUser/edit/{id}": {
+      "get": {
+        "tags": [
+          "AdminUser"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AdminUser"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Email",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName"
+                ],
+                "type": "object",
+                "properties": {
+                  "LastName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "FirstName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "MiddleName": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "Password": {
+                    "maxLength": 20,
+                    "minLength": 6,
+                    "type": "string",
+                    "format": "password"
+                  }
+                }
+              },
+              "encoding": {
+                "LastName": {
+                  "style": "form"
+                },
+                "FirstName": {
+                  "style": "form"
+                },
+                "MiddleName": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Password": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/AdminUser/delete/{id}": {
+      "get": {
+        "tags": [
+          "AdminUser"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Appointment/patient": {
       "get": {
         "tags": [
@@ -144,10 +792,10 @@
         }
       }
     },
-    "/admin/Doctor": {
+    "/DoctorService": {
       "get": {
         "tags": [
-          "Doctor"
+          "DoctorService"
         ],
         "responses": {
           "200": {
@@ -156,10 +804,10 @@
         }
       }
     },
-    "/admin/Doctor/create": {
+    "/DoctorService/create": {
       "get": {
         "tags": [
-          "Doctor"
+          "DoctorService"
         ],
         "responses": {
           "200": {
@@ -169,77 +817,52 @@
       },
       "post": {
         "tags": [
-          "Doctor"
+          "DoctorService"
         ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
                 "required": [
-                  "Email",
-                  "Experience",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "PostName",
-                  "Salary"
+                  "Cabinet",
+                  "Cost",
+                  "ServiceName"
                 ],
                 "type": "object",
                 "properties": {
-                  "LastName": {
+                  "ServiceName": {
                     "maxLength": 50,
                     "minLength": 0,
                     "type": "string"
                   },
-                  "FirstName": {
-                    "maxLength": 50,
+                  "Description": {
+                    "maxLength": 250,
                     "minLength": 0,
                     "type": "string"
                   },
-                  "MiddleName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Email": {
-                    "type": "string",
-                    "format": "email"
-                  },
-                  "PostName": {
-                    "type": "string"
-                  },
-                  "Experience": {
-                    "maximum": 50,
+                  "Cabinet": {
+                    "maximum": 101,
                     "minimum": 0,
                     "type": "integer",
                     "format": "int32"
                   },
-                  "Salary": {
+                  "Cost": {
                     "type": "number",
                     "format": "double"
                   }
                 }
               },
               "encoding": {
-                "LastName": {
+                "ServiceName": {
                   "style": "form"
                 },
-                "FirstName": {
+                "Description": {
                   "style": "form"
                 },
-                "MiddleName": {
+                "Cabinet": {
                   "style": "form"
                 },
-                "Email": {
-                  "style": "form"
-                },
-                "PostName": {
-                  "style": "form"
-                },
-                "Experience": {
-                  "style": "form"
-                },
-                "Salary": {
+                "Cost": {
                   "style": "form"
                 }
               }
@@ -253,10 +876,10 @@
         }
       }
     },
-    "/admin/Doctor/edit/{id}": {
+    "/DoctorService/edit/{id}": {
       "get": {
         "tags": [
-          "Doctor"
+          "DoctorService"
         ],
         "parameters": [
           {
@@ -277,7 +900,7 @@
       },
       "post": {
         "tags": [
-          "Doctor"
+          "DoctorService"
         ],
         "parameters": [
           {
@@ -295,35 +918,45 @@
             "multipart/form-data": {
               "schema": {
                 "required": [
-                  "Experience",
-                  "PostName",
-                  "Salary"
+                  "Cabinet",
+                  "Cost",
+                  "ServiceName"
                 ],
                 "type": "object",
                 "properties": {
-                  "PostName": {
+                  "ServiceName": {
+                    "maxLength": 50,
+                    "minLength": 0,
                     "type": "string"
                   },
-                  "Experience": {
-                    "maximum": 50,
+                  "Description": {
+                    "maxLength": 250,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Cabinet": {
+                    "maximum": 101,
                     "minimum": 0,
                     "type": "integer",
                     "format": "int32"
                   },
-                  "Salary": {
+                  "Cost": {
                     "type": "number",
                     "format": "double"
                   }
                 }
               },
               "encoding": {
-                "PostName": {
+                "ServiceName": {
                   "style": "form"
                 },
-                "Experience": {
+                "Description": {
                   "style": "form"
                 },
-                "Salary": {
+                "Cabinet": {
+                  "style": "form"
+                },
+                "Cost": {
                   "style": "form"
                 }
               }
@@ -337,10 +970,10 @@
         }
       }
     },
-    "/admin/Doctor/delete/{id}": {
+    "/DoctorService/delete/{id}": {
       "get": {
         "tags": [
-          "Doctor"
+          "DoctorService"
         ],
         "parameters": [
           {
@@ -676,438 +1309,6 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Service": {
-      "get": {
-        "tags": [
-          "Service"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Service/create": {
-      "get": {
-        "tags": [
-          "Service"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Service"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "required": [
-                  "Cabinet",
-                  "Cost",
-                  "ServiceName"
-                ],
-                "type": "object",
-                "properties": {
-                  "ServiceName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Description": {
-                    "maxLength": 250,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Cabinet": {
-                    "maximum": 101,
-                    "minimum": 0,
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Cost": {
-                    "type": "number",
-                    "format": "double"
-                  },
-                  "DoctorId": {
-                    "type": "string",
-                    "format": "uuid"
-                  }
-                }
-              },
-              "encoding": {
-                "ServiceName": {
-                  "style": "form"
-                },
-                "Description": {
-                  "style": "form"
-                },
-                "Cabinet": {
-                  "style": "form"
-                },
-                "Cost": {
-                  "style": "form"
-                },
-                "DoctorId": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Service/edit/{id}": {
-      "get": {
-        "tags": [
-          "Service"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Service"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "required": [
-                  "Cabinet",
-                  "Cost",
-                  "ServiceName"
-                ],
-                "type": "object",
-                "properties": {
-                  "ServiceName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Description": {
-                    "maxLength": 250,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Cabinet": {
-                    "maximum": 101,
-                    "minimum": 0,
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Cost": {
-                    "type": "number",
-                    "format": "double"
-                  },
-                  "DoctorId": {
-                    "type": "string",
-                    "format": "uuid"
-                  }
-                }
-              },
-              "encoding": {
-                "ServiceName": {
-                  "style": "form"
-                },
-                "Description": {
-                  "style": "form"
-                },
-                "Cabinet": {
-                  "style": "form"
-                },
-                "Cost": {
-                  "style": "form"
-                },
-                "DoctorId": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Service/delete/{id}": {
-      "get": {
-        "tags": [
-          "Service"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/admin/User": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/admin/User/create": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "required": [
-                  "Email",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Password"
-                ],
-                "type": "object",
-                "properties": {
-                  "LastName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "FirstName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "MiddleName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Email": {
-                    "type": "string",
-                    "format": "email"
-                  },
-                  "Password": {
-                    "maxLength": 20,
-                    "minLength": 6,
-                    "type": "string",
-                    "format": "password"
-                  }
-                }
-              },
-              "encoding": {
-                "LastName": {
-                  "style": "form"
-                },
-                "FirstName": {
-                  "style": "form"
-                },
-                "MiddleName": {
-                  "style": "form"
-                },
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/admin/User/edit/{id}": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "required": [
-                  "Email",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName"
-                ],
-                "type": "object",
-                "properties": {
-                  "LastName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "FirstName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "MiddleName": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Email": {
-                    "type": "string",
-                    "format": "email"
-                  },
-                  "Password": {
-                    "maxLength": 20,
-                    "minLength": 6,
-                    "type": "string",
-                    "format": "password"
-                  }
-                }
-              },
-              "encoding": {
-                "LastName": {
-                  "style": "form"
-                },
-                "FirstName": {
-                  "style": "form"
-                },
-                "MiddleName": {
-                  "style": "form"
-                },
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/admin/User/delete/{id}": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"

@@ -14,6 +14,9 @@ namespace WebClinic.Data.ViewModels.Schedule
         public required TimeSpan EndTime { get; set; }
 
         public required string ServiceName { get; set; }
+        public string? Description { get; set; }
+
+        public required int Cabinet { get; set; }
 
         public required string DoctorFullName { get; set; }
 

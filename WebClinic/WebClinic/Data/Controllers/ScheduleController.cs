@@ -158,7 +158,7 @@ namespace WebClinic.Controllers
         }
 
         [Authorize(Roles = "Доктор")]
-        [HttpGet("edit/{id}")]
+        [HttpGet("edit/{id:guid}")]
         public async Task<IActionResult> Edit(Guid id)
         {
             var schedule = await _context.Schedules
@@ -190,7 +190,7 @@ namespace WebClinic.Controllers
         }
 
         [Authorize(Roles = "Доктор")]
-        [HttpPost("edit/{id}")]
+        [HttpPost("edit/{id:guid}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [FromForm] EditScheduleViewModel model)
         {
@@ -239,7 +239,7 @@ namespace WebClinic.Controllers
         }
 
         [Authorize(Roles = "Доктор")]
-        [HttpGet("delete/{id}")]
+        [HttpGet("delete/{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var schedule = await _context.Schedules
@@ -253,8 +253,8 @@ namespace WebClinic.Controllers
 
             if (schedule.Appointments.Any()) 
             {
-                TempData["ErrorMessage"] = "Нельзя удалить слот расписания, потому что уже есть запись.";
-                return BadRequest();
+                TempData["ErrorMessage"] = "Невозможно удалить время приема, потому что уже есть запись.";
+                return RedirectToAction(nameof(Index));
             }
 
             _context.Schedules.Remove(schedule);
@@ -277,6 +277,8 @@ namespace WebClinic.Controllers
                    Date = s.Date,
                    StartTime = s.StartTime,
                    EndTime = s.EndTime,
+                   Cabinet = s.Service.Cabinet,
+                   Description = s.Service.Description,
                    ServiceName = s.Service != null
                        ? s.Service.ServiceName
                        : "Не назначена",
@@ -307,7 +309,7 @@ namespace WebClinic.Controllers
             if (patient == null)
             {
                 TempData["ErrorMessage"] = "Пациент не найден.";
-                return RedirectToAction("GetAvailableDates", "Schedule");
+                return RedirectToAction(nameof(Index));
             }
 
             var schedule = _context.Schedules.FirstOrDefault(s => s.Id == scheduleId && s.IsAvailable);
@@ -315,7 +317,7 @@ namespace WebClinic.Controllers
             if (schedule == null)
             {
                 TempData["ErrorMessage"] = "Расписание недоступно.";
-                return RedirectToAction("GetAvailableDates", "Schedule");
+                return RedirectToAction(nameof(Index));
             }
 
             var appointment = new Appointment

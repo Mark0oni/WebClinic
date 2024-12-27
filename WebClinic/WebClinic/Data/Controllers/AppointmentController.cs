@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebClinic.Data.Context;
 using WebClinic.Data.Models;
-using WebClinic.Data.ViewModels.Doctor;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -56,7 +55,7 @@ namespace WebClinic.Controllers
             if (doctor == null)
             {
                 TempData["ErrorMessage"] = "Доктор не найден.";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(nameof(Index));
             }
 
             ViewData["ShowCompleted"] = showCompleted;
@@ -89,8 +88,8 @@ namespace WebClinic.Controllers
 
             if (appointment == null || appointment.Status != AppointmentStatus.Scheduled)
             {
-                TempData["ErrorMessage"] = "Прием не найден или уже завершен.";
-                return RedirectToAction("GetMyPatients");
+                TempData["ErrorMessage"] = " Запись на прием не найдена или уже завершена.";
+                return RedirectToAction(nameof(Index));
             }
 
             var model = new AppointmentResultViewModel
@@ -101,6 +100,7 @@ namespace WebClinic.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Доктор")]
         [HttpPost("addAppointmentResult/{id:guid}")]
         public async Task<IActionResult> AddAppointmentResult([FromForm] AppointmentResultViewModel model)
         {
@@ -112,8 +112,8 @@ namespace WebClinic.Controllers
 
                 if (appointment == null)
                 {
-                    TempData["ErrorMessage"] = "Прием не найден.";
-                    return RedirectToAction("GetMyPatients");
+                    TempData["ErrorMessage"] = "Запись на прием не найдена.";
+                    return RedirectToAction(nameof(Index));
                 }
 
                 var appointmentResult = new AppointmentResult
@@ -131,7 +131,6 @@ namespace WebClinic.Controllers
                 _context.Appointments.Update(appointment);
                 await _context.SaveChangesAsync();
 
-                TempData["SuccessMessage"] = "Результат приема успешно сохранен.";
                 return RedirectToAction("GetMyPatients");
                 
             }
@@ -144,25 +143,34 @@ namespace WebClinic.Controllers
         public async Task<IActionResult> CancelAppointment(Guid id)
         {
             var appointment = await _context.Appointments
+                .Include(a => a.Schedule)
                 .FirstOrDefaultAsync(a => a.Id == id);
 
             if (appointment == null)
             {
-                TempData["ErrorMessage"] = "Запись не найдена.";
-                return RedirectToAction("GetMyPatients");
+                TempData["ErrorMessage"] = "Запись на прием не найдена.";
+                return RedirectToAction(nameof(Index));
             }
 
             if (appointment.Status != AppointmentStatus.Scheduled)
             {
                 TempData["ErrorMessage"] = "Нельзя отменить запись, которая уже завершена или отменена.";
-                return RedirectToAction("GetMyPatients");
+                return RedirectToAction(nameof(Index));
             }
 
             appointment.Status = AppointmentStatus.Cancelled;
+
+            if (appointment.Schedule != null)
+            {
+                appointment.Schedule.IsAvailable = true;
+                _context.Schedules.Update(appointment.Schedule);
+            }
+
             _context.Appointments.Update(appointment);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("GetMyPatients");
         }
+
     }
 }

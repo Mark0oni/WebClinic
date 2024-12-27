@@ -43,11 +43,11 @@
                         <td>@schedule.Date.ToShortDateString()</td>
                         <td>@schedule.StartTime</td>
                         <td>@schedule.EndTime</td>
-                        <td>@(schedule.IsAvailable ? "Доступно" : "Не доступно")</td>
+                        <td><b>@(schedule.IsAvailable ? "Доступно" : "Не доступно")</b></td>
                         <td>
                             <div class="table-btn">
                                 <a href="@Url.Action("Edit", "Schedule", new { id = schedule.Id })" class="btn btn-primary btn-secondary">Редактировать</a>
-                                <a href="@Url.Action("Delete", "Schedule", new { id = schedule.Id })" class="btn btn-primary btn-secondary" onclick="return confirm('Вы уверены, что хотите удалить это время приема?');">Удалить</a>
+                                <a href="@Url.Action("Delete", "Schedule", new { id = schedule.Id })" class="btn btn-primary btn-danger" onclick="return confirm('Вы уверены, что хотите удалить это время приема?');">Удалить</a>
                             </div>
                         </td>
                     </tr>

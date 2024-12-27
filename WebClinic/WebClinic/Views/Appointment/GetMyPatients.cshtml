@@ -43,11 +43,11 @@
                     var patient = appointment.Patient.User;
 
                     <tr>
-                        <td>@appointment.Schedule.Date</td>
+                        <td>@appointment.Schedule.Date.ToShortDateString()</td>
                         <td>@appointment.Schedule.StartTime</td>
                         <td>@appointment.Schedule.EndTime</td>
                         <td>@patient.LastName @patient.FirstName @patient.MiddleName</td>
-                        <td>@appointment.Status.ToRussianString()</td>
+                        <td><b>@appointment.Status.ToRussianString()</b></td>
                         <td>
                             <div class="table-btn">
                                 @if (appointment.Status == AppointmentStatus.Scheduled)

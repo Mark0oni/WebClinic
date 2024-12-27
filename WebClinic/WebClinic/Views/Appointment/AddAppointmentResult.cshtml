@@ -1,7 +1,7 @@
 ﻿@model WebClinic.Data.ViewModels.Appointment.AppointmentResultViewModel
 
 @{
-    ViewData["Title"] = "Добавить результат приема";
+    ViewData["Title"] = "Добавить запись в мед. карту";
     ViewData["HideGreeting"] = true;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -21,7 +21,7 @@
 }
 
 <div class="form-container">
-    <h2 class="form-title">Добавление результата приема</h2>
+    <h2 class="form-title">Добавление записи в мед. карту</h2>
 
     <div class="form-box">
         <form asp-action="AddAppointmentResult" method="post">
@@ -41,7 +41,7 @@
 
             <div class="form-btn">
                 <input type="hidden" name="AppointmentId" value="@Model.AppointmentId" />
-                <button type="submit" class="btn btn-primary">Сохранить результат</button>
+                <button type="submit" class="btn btn-primary">Добавить</button>
                 <a href="@Url.Action("GetMyPatients", "Appointment")" class="btn btn-secondary">Отмена</a>
             </div>
         </form>
